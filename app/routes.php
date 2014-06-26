@@ -15,7 +15,9 @@
 //echo public_path() . '/uploads/afisha/big/';
 
 Route::get('home', array('as' => 'home','uses'=>'HomeController@index'));
-Route::get('/', array('as' => 'index','uses'=>'HomeController@oldindex'));
+Route::get('/', function(){
+    return Response::view('home.old');
+});
 
 
 Route::resource('afishas', 'AfishasController');
