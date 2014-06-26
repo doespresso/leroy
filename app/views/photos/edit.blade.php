@@ -1,0 +1,1 @@
+/Users/jd/servers/LOCALHOST/leroy-restaurant.ru/public/app/views/photos/edit.blade.php

@@ -1,0 +1,197 @@
+@gap:30px;
+@logo-symbol-path:'/assets/img/logo/logo_symbol_original.svg';
+@logo-symbol-curved-path:'/assets/img/logo/logo_symbol_curved.svg';
+
+
+@font-family-titles-1: "ProximaNova","UKIJQolyazma", Arial;
+@font-family-titles-2: "UKIJQolyazma", "ProximaNova", Arial;
+
+
+@import "/utils/utils.less";
+@import "/fonts/fonts.less"; //fonts
+
+@import "/loaders/loaders.less";
+
+@import "/resets/resets.less";
+@import "/color/color.less"; //colors
+
+@import "/lists/lists.less";
+
+@import "/logo/logo.less"; //logotype
+@import "/grid/grid.less"; //site
+@import "/animations/page-background.less"; //page background
+@import "/arrows/arrows.less"; //arrows
+
+
+@import "../bootstrap/less/bootstrap.less"; //Bootstrap 3
+
+@import "/icons/icons.less"; //icons
+
+@import "/slider/slider.less"; //sliders
+@import "/menu/menu-cafe.less"; //menu cafe
+@import "/menus/menus.less"; //navigations
+
+@import "/buttons/buttons.less"; //buttons
+
+
+
+
+
+@import "/text-content/text-content.less"; //text content styles
+@import "/animations/animate.less";
+@import "/animations/custom-animations.less"; //custom animations
+
+
+@import "/loaders/indicators.less"; //loading indicators
+
+
+@import "/video/video-bg.less"; //loading indicators
+@import "/social/social.less"; //social icons
+
+body{overflow:hidden}
+
+
+#page-loading-frame{
+  position:fixed;
+  z-index:2000;
+  left:0;
+  top:0;
+  width:100%;
+  height:100%;
+  background-color: #000;
+  display:none;
+  .loading &{
+    display:block;
+  }
+}
+
+.toppanel{
+  position:fixed;
+  z-index:2000;
+  right:0;
+  top:0;
+  background-color: #fff;
+  padding:10px;
+}
+.pages-container {
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  margin: 0;
+  overflow: hidden;
+}
+
+.pages-wrapper {
+  position: relative;
+  width: 100%;
+  -webkit-box-sizing: content-box;
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
+}
+
+.page-slide {
+  margin: 0;
+  padding: 0;
+  float: left;
+  position:relative;
+  #bg-cover();
+
+  .page-content-wrapper {
+    /*border: 2px dashed yellow;*/
+    height: 100%;
+    z-index: 1;
+  }
+
+  &.vm{
+    display: table;
+    .page-content-wrapper {
+      display: table-cell;
+      vertical-align: middle;
+      text-align: center;
+    }
+  }
+
+
+&.swiper-slide-active{
+  >.go-showcase.active{
+    .opacity(1);
+    display:block;
+  }
+}
+}
+
+
+
+
+/////////
+address,phone{
+  margin:0 0;
+}
+
+
+#panel-bottom{
+  @h:40px;
+  position:fixed;
+  z-index:11;
+  left:0px;
+  bottom:0px;
+  width:100%;
+  height:@h;
+  margin:0;
+  padding:0;
+  display:block;
+  background-color:@gray-light;
+}
+
+#go-page-down{
+  @w:20px;
+  position:fixed;
+  z-index:10;
+  left:50%;
+  bottom:2%;
+  width:@w;
+  height:@w;
+  margin-left:-@w/2;
+  display:block;
+  background-color:@gray-light;
+}
+
+#go-showcase{
+  text-decoration:none;
+  .opacity(0);
+  .translate(0; 200px);
+  .transition(0.5s);
+  @ss:16px;
+  position:absolute;
+  z-index:5;
+  bottom:7%;
+  left:0;
+  width:100%;
+  text-align:center;
+  font-size:@ss;
+  line-height:@ss;
+  font-family:@font-family-titles-2;
+  text-transform:uppercase;
+  padding-bottom:5px;
+  span{
+    border-bottom:1px #fff solid;
+  }
+  &.active{
+    .opacity(1);
+    .translate(0; 0;);
+  }
+}
+
+.page-back-pic{
+  position:fixed;
+  z-index:-1;
+  left:50%;
+  top:50%;
+  width:70vw;
+  height:30vh;
+  margin-left:-35vw;
+  margin-top:-15vh;
+  display:block;
+//  background:url('/img/bg/trombone.svg') no-repeat center center;
+  .opacity(0.5);
+}

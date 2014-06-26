@@ -1,0 +1,1 @@
+@foreach ($photos as $photo)<a class="photo-item" rel="photo-nav" href='{{url("/")}}/uploads/gallery/big/{{$photo->img}}'><img src='{{url("/")}}/uploads/gallery/thumb/{{$photo->img}}'/></a>@endforeach
