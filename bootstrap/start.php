@@ -26,9 +26,8 @@ $app = new Illuminate\Foundation\Application;
 
 $env = $app->detectEnvironment(array(
 
-    'local' => array('*.local'),
-    'leroy-restaurant' => array('*.leroy-restaurant.ru')
-
+    'local' => array('*.localhost*'),
+    'leroy-restaurant' => array('http://www.leroy-restaurant.ru*','http://leroy-restaurant.ru*')
 ));
 
 /*
