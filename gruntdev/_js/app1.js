@@ -226,34 +226,37 @@ yepnope([
                     shortSwipes: true,
 //                    longSwipesRatio: 0.2,
 
-                    resizeReInit: false, // на сколько я понимаю этот параметр не учитывается [1]
+                    resizeReInit: true, // на сколько я понимаю этот параметр не учитывается [1]
 //                    wrapperClass: 'swiper-wrapper',
 //                    slideClass: 'swiper-slide',
                     progress: sl_progress,
                     onFirstInit:function(swiper){
 
                         console.log("first init");
-                        $(window).on("resize", function () {
-                            if (reinittimeout) {
-                                clearTimeout(reinittimeout);
-                                reinittimeout = null;
-                            }
-                            reinittimeout = setTimeout(function () {
-                                console.log("dsjflkjsdflksdjfklsdjflksdf");
-                                swiper.reInit();
-                                for (var i = 0; i < swiper.slides.length; i++){
-                                    swiper.setTransition(swiper.slides[i], 0);
-                                    console.log("set transitiion",i);
-                                }
-                                swiper.swipeTo(0, 1);
-                            }, 300);
-                        });
+//                        $(window).on("resize", function () {
+//                            if (reinittimeout) {
+//                                clearTimeout(reinittimeout);
+//                                reinittimeout = null;
+//                            }
+//                            reinittimeout = setTimeout(function () {
+//                                console.log("dsjflkjsdflksdjfklsdjflksdf");
+//                                swiper.reInit();
+//                                for (var i = 0; i < swiper.slides.length; i++){
+//                                    swiper.setTransition(swiper.slides[i], 0);
+//                                    console.log("set transitiion",i);
+//                                }
+//                                swiper.swipeTo(0, 1);
+//                            }, 300);
+//                        });
 
                     },
                     onInit: function(swiper) {
-
-
-
+                        setTimeout(function(){
+                        for (var i = 0; i < swiper.slides.length; i++){
+                            swiper.setTransform(slide, 'translate3d(0,0,0)');
+                        }
+                        },1000);
+                        swiper.swipeTo(0,1);
                     },
 
                     onSwiperCreated: function (swiper) {
