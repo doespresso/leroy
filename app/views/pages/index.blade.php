@@ -1,15 +1,17 @@
 <a id="go-showcase" href="#"><span>showcase</span></a>
 <div id="go-page-down"></div>
 
-<div id="panel-bottom">
-    <div class="container">
-        <div class="row">
-            <div class="col-xs-4">1</div>
-            <div class="col-xs-4">2</div>
-            <div class="col-xs-4">3</div>
-        </div>
-    </div>
-</div>
+<!--<div id="panel-bottom">-->
+<!--    <div class="container">-->
+<!--        <div class="row">-->
+<!--            <div class="col-xs-4">1</div>-->
+<!--            <div class="col-xs-4">2</div>-->
+<!--            <div class="col-xs-4">3</div>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</div>-->
+
+
 
 
 <div id="main-pages" class="pages-container">

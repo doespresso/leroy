@@ -195,3 +195,58 @@ address,phone{
 //  background:url('/img/bg/trombone.svg') no-repeat center center;
   .opacity(0.5);
 }
+
+
+/////ADF//////////////////////////////////////////////////////////////////////////////////////////////////
+.adf{
+//  background-color:red;
+  display:block;
+  svg{
+    width:auto; height:100%;
+    #a,#d,#f{
+        fill:none;
+        stroke-width:7;
+        stroke:#333;
+    }
+  }
+  &.small-logo{
+    height:40px;
+  }
+
+  &.drawpath{
+    svg{
+      #a,#d,#f{
+    stroke-dasharray: 100;
+    stroke-dashoffset: 5000;
+//    animation: dash linear;
+//    -webkit-animation: dash linear;
+//    animation-iteration-count:1;
+//    -webkit-animation-iteration-count:1;
+//    animation-duration:5s;
+//    -webkit-animation-duration:5s;
+//    .animation-delay(2s);
+      }
+  }
+  }
+}
+
+
+
+
+@keyframes dash {
+  from {
+    stroke-dashoffset: 0;
+  }
+  to {
+    stroke-dashoffset: 6000;
+  }
+}
+
+@-webkit-keyframes dash {
+  from {
+    stroke-dashoffset: 0;
+  }
+  to {
+    stroke-dashoffset: 6000;
+  }
+}
