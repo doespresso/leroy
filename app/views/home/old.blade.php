@@ -38,7 +38,10 @@
         <p class="adress">Questions & Reserv<br>+7 495 594 16 06</p>
     </div>
     <div style="margin-top: 0px; margin-left:60px; line-height:42px; border-bottom:1px solid #fff; font-size:24px; padding:10px 60px;">&mdash;
-        <a href="/oldassetfiles/LEROY_CORPORATE_OFFER.pdf" target="_blank" style="color:#fff; text-decoration: none;">праздники и корпоративы в ресторане Leroy</a>
+        <a href="/uploads/leroy_menu.pdf" target="_blank" style="color:#fff; text-decoration: none;">меню ресторана</a>
+    </div>
+    <div style="margin-top: 0px; margin-left:60px; line-height:42px; border-bottom:1px solid #fff; font-size:24px; padding:10px 60px;">&mdash;
+        <a href="/uploads/LEROY_CORPORATE_OFFER.pdf" target="_blank" style="color:#fff; text-decoration: none;">праздники и корпоративы в ресторане Leroy</a>
     </div>
 </article>
 
