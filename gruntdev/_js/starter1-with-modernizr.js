@@ -860,7 +860,7 @@ var sliding_speed = 2500,
 //yepnope.injectCss(['dev/component/odometer/themes/odometer-theme-minimal.css']);
 
 if (Modernizr.touch) {
-//    sliding_speed = 500;
+    sliding_speed = 500;
 //    sl_progress = false;
 }
 
