@@ -1084,7 +1084,8 @@ yepnope([
                     resizeReInit: true, // на сколько я понимаю этот параметр не учитывается [1]
 //                    wrapperClass: 'swiper-wrapper',
 //                    slideClass: 'swiper-slide',
-                    progress: sl_progress,
+//                    progress: sl_progress,
+                    progress: false,
                     onFirstInit:function(swiper){
 
                         console.log("first init");
