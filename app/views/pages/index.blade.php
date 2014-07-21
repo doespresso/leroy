@@ -1,5 +1,6 @@
-<a id="go-showcase" href="#"><span>showcase</span></a>
-<div id="go-page-down"></div>
+<a class="sub-nav-btn" id="go-showcase" href="#"><span>showcase</span></a>
+<a class="sub-nav-btn" id="go-page-down"></a>
+<a class="sub-nav-btn" id="go-back"><span>back</span></a>
 
 <!--<div id="panel-bottom">-->
 <!--    <div class="container">-->
@@ -52,7 +53,7 @@
             </div>
             </div>
             @foreach ($showcase->photos as $photo)
-            <div class="page-slide" style='background-image:url({{url("/")}}/uploads/gallery/big/{{$photo->img}})'></div>
+            <div class="page-slide" data-type="photo" style='background-image:url({{url("/")}}/uploads/gallery/big/{{$photo->img}})'></div>
             @endforeach
         </div>
     </div>

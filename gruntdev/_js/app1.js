@@ -1,11 +1,11 @@
-var sliding_speed = 2500,
+var sliding_speed = 1000,
     sl_progress = true,
     reinittimeout;
 
 //yepnope.injectCss(['dev/component/odometer/themes/odometer-theme-minimal.css']);
 
 if (Modernizr.touch) {
-    sliding_speed = 500;
+    sliding_speed = 300;
 //    sl_progress = false;
 }
 
@@ -51,7 +51,6 @@ yepnope([
             'jquery': function (url, result, key) {
 
 
-                ////////////////////////////reset link #
                 $(window).on("load", function () {
                     console.log("win load");
                 });
@@ -59,12 +58,6 @@ yepnope([
 
 
 
-                /////
-
-//                $(document).ready(function () {
-//                    $(".section-wrapper").css('height', $(window).height() + 'px');
-//                    console.log("LOAD");
-//                });
 
 
                 $(function () {
@@ -185,17 +178,21 @@ yepnope([
                     slideClass: 'page-slide',
                     onSwiperCreated: function (swiper) {
                         initpages(swiper);
+                        reinitDown(swiper);
                     }
                 });
 
                 pages.addCallback('SlideChangeStart', function (swiper) {
                     $("#go-showcase").removeClass("active");
+                    $("#go-page-down").removeClass("have-sub have-next");
+                    $("#go-back").removeClass("active");
                 });
                 pages.addCallback('SlideChangeEnd', function (swiper) {
                     c_page_id = $(pages.activeSlide()).attr("id");
-                    c_page_index = pages.activeIndex;
-                    l_page_index = pages.previousIndex;
-                    console.log(c_page_id, c_page_index, l_page_index);
+                    c_page_index = swiper.activeIndex;
+                    l_page_index = swiper.previousIndex;
+                    all_slides = swiper.slides.length;
+                    console.log(c_page_id, c_page_index, l_page_index, swiper.slides.length);
 //                    sub_pages.swipeTo(0);
                     if (c_page_index !== 0) {
                         presentation.stopAutoplay();
@@ -203,17 +200,41 @@ yepnope([
                         presentation.startAutoplay();
                     }
                     //////showcase
-                    if ($(swiper.activeSlide()).attr("data-photos")) {
-                        $("#go-showcase").addClass("active");
-                    } else {
-                    }
+                    reinitDown(swiper);
                 });
                 pages.addCallback('TouchStart', function (swiper) {
                     console.log("touch");
                 });
 
 
+                //////////////show next more ///////////
+                //////////////show next more ///////////
+                //////////////show next more ///////////
 
+                function reinitDown(swiper){
+                    if (swiper.activeIndex < swiper.slides.length - 1){
+                        $("#go-page-down").addClass("have-next");
+                    }
+//                    console.log($(swiper.activeSlide()));
+                    var subpages  = $(swiper.activeSlide()).children(".pages-container").length;
+                    if (subpages > 0 || swiper.activeIndex == 0) {
+//                        $("#go-showcase").addClass("active");
+                        $("#go-page-down").addClass("have-sub");
+                        if(swiper.activeIndex !== 0) $("#go-showcase").addClass("active");
+                    } else {
+                    }
+                    $("#go-back").removeClass("active");
+                }
+
+                $("#go-page-down").on("click", function (e) {
+                    e.preventDefault();
+                    pages.swipeNext();
+                })
+
+
+                //////////////show next more ///////////
+                //////////////show next more ///////////
+                //////////////show next more ///////////
 
 
                 var presentation = new Swiper('#main', {
@@ -355,6 +376,20 @@ yepnope([
                             for (var i = 0; i < swiper.slides.length; i++) {
                                 swiper.slides[i].style.zIndex = i;
                             }
+
+                        },
+                        onSlideChangeStart:function(swiper){
+                        },
+                        onSlideChangeEnd:function(swiper){
+                            if(swiper.activeIndex > 0){
+                                console.log("this is photo");
+                                $("#go-back").addClass("active");
+                                $("#go-showcase").removeClass("active");
+                            } else
+                            {
+                                $("#go-back").removeClass("active");
+                                $("#go-showcase").addClass("active");
+                            }
                         }
                     });
                 });
@@ -362,72 +397,6 @@ yepnope([
 
 
 
-
-
-
-
-
-
-
-
-                $("#go-page-down").on("click", function (e) {
-                    e.preventDefault();
-                    pages.swipeNext();
-                })
-
-//                    var sw = new Swiper('#main', {
-//                        watchActiveIndex: true,
-//                        centeredSlides: false,
-//                        resizeReInit: true,
-//                        speed: sliding_speed,
-//                        followFinger: true,
-//                        paginationClickable: true,
-//                        pagination: '#presentation-pager',
-//                        autoplay: 5000,
-//                        loop: true,
-//                        progress: sl_progress,
-//                        onFirstInit: function (swiper) {
-//                            $("body").removeClass("loading");
-//                            setTimeout(function () {
-//                                $("#main-loader").css("display", "none")
-//                            }, 2000);
-//                        },
-//                        onInit: function (swiper) {
-//                            console.log("gen init");
-//                        },
-//                        onProgressChange: function (swiper) {
-//                            for (var i = 0; i < swiper.slides.length; i++) {
-//                                var slide = swiper.slides[i];
-//                                var progress = slide.progress;
-//                                var translate = progress * swiper.width;
-//                                var opacity = 1 - Math.min(Math.abs(progress), 1);
-//                                slide.style.opacity = opacity;
-//                                swiper.setTransform(slide, 'translate3d(' + translate + 'px,0,0)');
-//                            }
-//                        },
-//                        onTouchStart: function (swiper, speed) {
-//                            for (var i = 0; i < swiper.slides.length; i++) {
-//                                swiper.setTransition(swiper.slides[i], 0);
-//                            }
-//                        },
-//                        onSetWrapperTransition: function (swiper, speed) {
-//                            for (var i = 0; i < swiper.slides.length; i++) {
-//                                swiper.setTransition(swiper.slides[i], speed);
-//                            }
-//                        },
-//                        onSlideChangeEnd: function (swiper, direction) {
-//                            console.log(direction);
-//                            $(sw.activeSlide()).find('.title').addClass('animated');
-//                        }
-//                    });
-//                    $("#presentation .next").on("click", function (event) {
-//                        event.preventDefault();
-//                        sw.swipeNext();
-//                    });
-//                    $("#presentation .prev").on("click", function (event) {
-//                        event.preventDefault();
-//                        sw.swipePrev();
-//                    });
 
 
             },
