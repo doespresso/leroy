@@ -89,6 +89,10 @@ return array(
             'type' => 'bool',
             'title' => 'Показать контакты',
         ),
+        'showqr' => array(
+            'type' => 'bool',
+            'title' => 'Показать QR-code',
+        ),
         'showsocial' => array(
             'type' => 'bool',
             'title' => 'Показать социальщину',

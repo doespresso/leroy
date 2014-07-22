@@ -56,6 +56,9 @@
     @if(Setting::get('address'))<address>{{Setting::get('address')}}</address>@endif
     @if(Setting::get('phone'))<phone>{{Setting::get('phone')}}</phone>@endif
 @endif
+    @if($page->showqr)
+    <figure id="qrcode">{{Setting::get('qr')}}</figure>
+    @endif
 @if($page->showsocial)
     @include('social.icons')
 @endif

@@ -149,7 +149,7 @@ address,phone{
 .sub-nav-btn{
   z-index:10;
   position:fixed;
-  bottom:2%;
+  bottom:@gap;
   display:block;
   height:@wb;
 
@@ -180,10 +180,13 @@ address,phone{
 #go-showcase{
   text-decoration:none;
   .transition(0.5s);
-  .translate(0,100px);
+  .translate(0,1000%);
   @ss:16px;
+  bottom:@gap*3;
   left:50%;
-  margin-left:@wb;
+  width:100px;
+//  margin-left:@wb;
+  margin-left:-50px;
   padding-top: (@wb - @ss) / 2;
   text-align:center;
   font-size:@ss;
@@ -223,6 +226,22 @@ address,phone{
 }
 
 
+#qrcode{
+  display:none;
+  .no-touch &{
+    display:block;
+    width:100px;
+    height:100px;
+    margin:@gap/2 auto;
+    svg{
+      width:100%;
+      height:100%;
+
+    }
+  }
+}
+
+
 .page-back-pic{
   position:fixed;
   z-index:-1;
@@ -238,56 +257,7 @@ address,phone{
 }
 
 
-/////ADF//////////////////////////////////////////////////////////////////////////////////////////////////
-.adf{
-//  background-color:red;
-  display:block;
-  svg{
-    width:auto; height:100%;
-    #a,#d,#f{
-        fill:none;
-        stroke-width:7;
-        stroke:#333;
-    }
-  }
-  &.small-logo{
-    height:40px;
-  }
-
-  &.drawpath{
-    svg{
-      #a,#d,#f{
-    stroke-dasharray: 100;
-    stroke-dashoffset: 5000;
-//    animation: dash linear;
-//    -webkit-animation: dash linear;
-//    animation-iteration-count:1;
-//    -webkit-animation-iteration-count:1;
-//    animation-duration:5s;
-//    -webkit-animation-duration:5s;
-//    .animation-delay(2s);
-      }
-  }
-  }
-}
 
 
 
 
-@keyframes dash {
-  from {
-    stroke-dashoffset: 0;
-  }
-  to {
-    stroke-dashoffset: 6000;
-  }
-}
-
-@-webkit-keyframes dash {
-  from {
-    stroke-dashoffset: 0;
-  }
-  to {
-    stroke-dashoffset: 6000;
-  }
-}

@@ -48,6 +48,10 @@ return array(
             'title' => 'Адрес ENG',
             'type' => 'text',
         ),
+        'qr' => array(
+            'title' => 'QR',
+            'type' => 'text',
+        ),
 //        'tel2' => array(
 //            'title' => 'Телефон 2',
 //            'type' => 'text',
