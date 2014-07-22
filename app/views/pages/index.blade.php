@@ -2,19 +2,6 @@
 <a class="sub-nav-btn" id="go-page-down"></a>
 <a class="sub-nav-btn" id="go-back"><span>back</span></a>
 
-<!--<div id="panel-bottom">-->
-<!--    <div class="container">-->
-<!--        <div class="row">-->
-<!--            <div class="col-xs-4">1</div>-->
-<!--            <div class="col-xs-4">2</div>-->
-<!--            <div class="col-xs-4">3</div>-->
-<!--        </div>-->
-<!--    </div>-->
-<!--</div>-->
-
-
-
-
 <div id="main-pages" class="pages-container">
 <div class="pages-wrapper">
 
@@ -53,7 +40,9 @@
             </div>
             </div>
             @foreach ($showcase->photos as $photo)
-            <div class="page-slide" data-type="photo" style='background-image:url({{url("/")}}/uploads/gallery/big/{{$photo->img}})'></div>
+            <div class="page-slide" data-type="photo" style='background-image:url({{url("/")}}/uploads/gallery/big/{{$photo->img}})'>
+                <figure class="photo-caption">{{$photo->desc}}</figure>
+            </div>
             @endforeach
         </div>
     </div>
