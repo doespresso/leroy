@@ -28,6 +28,8 @@
     "animate.css-helpers": null,
     "bootstrap-select": null,
     "switchery": null,
-    "odometer": "~0.4.6"
+    "odometer": "~0.4.6",
+    "js-router": "~0.5.0",
+    "simrou": "~1.5.2"
   }
 }

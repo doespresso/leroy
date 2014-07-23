@@ -165,16 +165,24 @@ address,phone{
   background-repeat:no-repeat;
   backgrount-position:center center;
   background-size:contain;
+
+    #ui-arrow-down(@w:@w; @c:rgba(255,255,255,0.7););
+//  }
+
+
   &.have-next {
     .translate(0,0);
     .transition(1s);
-    background-color:red;
+//    background-color:red;
 //    background-image:url('/assets/icons/down.svg');
   }
   &.have-sub {
-    background-color:blue;
+//    background-color:blue;
 //    background-image:url('/assets/icons/down.svg');
   }
+
+
+
 }
 
 #go-showcase{
@@ -208,10 +216,12 @@ address,phone{
   .transition(0.5s);
   .translate(0,100px);
   @ss:16px;
-  right:50%;
-  margin-right:@wb;
+//  right:50%;
+  left:0;
+//  margin-right:@wb;
+  padding-left:@gap;
   padding-top: (@wb - @ss) / 2;
-  text-align:center;
+  text-align:left;
   font-size:@ss;
   line-height:@ss;
   font-family:@font-family-titles-2;
@@ -243,16 +253,20 @@ address,phone{
 
 
 .page-back-pic{
+  @ps:100vw;
   position:fixed;
   z-index:-1;
   left:50%;
   top:50%;
-  width:70vw;
-  height:30vh;
-  margin-left:-35vw;
-  margin-top:-15vh;
-  display:block;
-//  background:url('/img/bg/trombone.svg') no-repeat center center;
+  width:@ps;
+  height:@ps;
+  margin-left:-@ps/2;
+  margin-top:-@ps/2;
+  display:none;
+  background-color:red;
+  background-image:url('/img/bg/trombone.svg');
+  background-repeat:no-repeat;
+  background-position:center center;
   .opacity(0.5);
 }
 

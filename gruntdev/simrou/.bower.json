@@ -1,0 +1,15 @@
+{
+  "name": "simrou",
+  "homepage": "https://github.com/buero-fuer-ideen/Simrou",
+  "version": "1.5.2",
+  "_release": "1.5.2",
+  "_resolution": {
+    "type": "version",
+    "tag": "v1.5.2",
+    "commit": "fbd58e632e88f88d77d7733081015f6a8b5f23ca"
+  },
+  "_source": "git://github.com/buero-fuer-ideen/Simrou.git",
+  "_target": "~1.5.2",
+  "_originalSource": "simrou",
+  "_direct": true
+}

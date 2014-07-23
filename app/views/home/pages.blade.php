@@ -8,56 +8,63 @@
 
 
 
-<div class="toppanel">
-    <figure data-action="reset" data-text="testslide++">add slide</figure>
-</div>
-
 <div id="page-loading-frame"></div>
+
+<nav class="menu-slide st-effect-1" id="menu-slide">
+    <ul>
+        <li><a href="#">Restaurant</a></li>
+        <li><a href="#menu">Menu</a></li>
+        <li><a href="#">Main dishes</a></li>
+        <li><a href="#">Wines</a></li>
+        <li><a href="#">Bar</a></li>
+        <li><a href="#terrace">Terrasse</a></li>
+        <li><a href="#event">Event</a></li>
+        <li><a href="#">Contact</a></li>
+        <li><a href="#concert">Concerts</a></li>
+    </ul>
+</nav>
+<nav class="menu-closer" id="menu-closer"></nav>
+
+<header id="panel-top">
+    <div class="wrapper">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-3">
+                    <div class="vmp">
+                        <div class="vmc">
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-6 text-center">
+                    <div class="vmp">
+                        <div class="vmc">
+                            <div id="logo-area" class="">
+                                <figure class="logo-standart"></figure>
+                                <figure class="logo-name">LEROY</figure>
+                                <figure class="logo-slogan">Restaurant & Bar</figure>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-3">
+                    <div class="vmp text-right">
+                        <div class="vmc">
+                            <a href="#/nav" id="menu-opener">
+                                <figure></figure>
+                                <figure></figure>
+                                <figure></figure>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
 
 @include('pages.index')
 
-<!--<div id="main-pages" class="pages-container">-->
-<!--    <div class="pages-wrapper">-->
-<!--        <div class="page-slide vm" id="page-presentation" data-hash="page-presentation" style="background-color: gray">-->
-<!--            <div class="page-content-wrapper">-->
-<!--                <h3>Презентация</h3>-->
-<!--            </div>-->
-<!--        </div>-->
-<!---->
-<!--        <div class="page-slide" id="page-about" data-hash="page-about" style="background-color: red">-->
-<!--            <div id="section1-pages" class="pages-container">-->
-<!--                <div class="pages-wrapper">-->
-<!--                    <div class="page-slide vm" style="background-color: lime">-->
-<!--                        <div class="page-content-wrapper">Заголовок</div>-->
-<!--                    </div>-->
-<!--                    <div class="page-slide" style="background-color: #31b0d5">foto 1</div>-->
-<!--                    <div class="page-slide" style="background-color: #ccb168">foto 2</div>-->
-<!--                    <div class="page-slide" style="background-color: #708090">foto 3</div>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--        </div>-->
-<!---->
-<!--        <div class="page-slide" id="page-menus" data-hash="page-menus" style="background-color:transparent">-->
-<!--            <div class="page-content-wrapper">-->
-<!--            </div>-->
-<!--        </div>-->
-<!---->
-<!--        <div class="page-slide" id="page-events" data-hash="page-events" style="background-color: green">-->
-<!--            <div class="page-content-wrapper">333</div>-->
-<!--        </div>-->
-<!---->
-<!--        <div class="page-slide" style="background-color: green">-->
-<!--            <div class="page-content-wrapper">333</div>-->
-<!--        </div>-->
-<!---->
-<!--    </div>-->
-<!--</div>-->
-
-
-
-<!--<div class="page-back-video"></div>-->
-<!--<div class="page-back-img"></div>-->
-<!--<div class="page-back-bg"></div>-->
 <div class="page-back-pic"></div>
 
 

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Simrou Demo - Overview</title>
+        
+        <script type="text/javascript" src="../lib/jquery-1.7.2.min.js"></script>
+        <script type="text/javascript" src="../build/simrou.min.js"></script>
+        
+        <!--[if lte IE 7]>
+        <script type="text/javascript" src="../lib/jquery.ba-hashchange.min.js"></script>
+        <![endif]-->
+        
+        <script type="text/javascript">
+        $(function() {
+            // Create a new Simrou instance
+            var router = new Simrou();
+            
+            // Register a route that matches all articles
+            var articles = router.addRoute('/articles/:id');
+            
+            // Attach an action for GET requests to that route
+            articles.get(function(event, params) {
+                alert('Reading article #' + params.id);
+            });
+            
+            // Attach an action for PUT requests using the shortcut function put()
+            articles.put(function() {
+                alert('Article - via PUT!');
+            });
+            
+            // Register a second route (for the homepage, case-insensitive = second parameter to false)
+            router.addRoute('/homepage', false).any(function(event, params, method) {
+                alert('Homepage called, using HTTP method => ' + method);
+            });
+            
+            // Register a route with a wildcard in it:
+            router.addRoute('/portfolio/:section/*path').get(function(event, params) {
+                alert(params.section + ' ### ' + params.path);
+            });
+            
+            // Bulk register routes and action handlers
+            router.addRoutes({
+                '/another/route': {
+                    get: [
+                        function() { alert('1.1'); },
+                        function() { alert('1.2'); } 
+                    ],
+                    post: function() { alert('2'); }
+                },
+                '/yet/another/route': function() { alert('3'); }
+            });
+            
+            // Start the routing with the homepage as a default route...
+            router.start('/homepage');
+            
+            // Navigate to an article when the button gets clicked
+            $('#test').click(function(e) {
+                router.navigate('/articles/181');
+                e.preventDefault();
+            });
+        });
+        </script>
+    </head>
+    
+    <body>
+        
+        <ul>
+            <li><a href="#/articles/172">Article 172</a></li>
+            <li><a href="#/portfolio/webdesign/page/3">Portfolio - Webdesign</a></li>
+            <li><a href="#/homepage">Back to the homepage</a></li>
+            <li><a href="#/homepage" id="test">Article 181 via navigate()</a></li>
+        </ul>
+        
+        <form action="/articles/194" method="put">
+            <button type="submit">Send form (route for target exists, article #194)</button>
+        </form>
+        
+        <form action="/test" method="get">
+            <button type="submit">Send form (no route matches the target)</button>
+        </form>
+        
+    </body>
+</html>

@@ -80,6 +80,8 @@ module.exports = function (grunt) {
 //            requirejs:{files:{'<%= js_folder %>/require.min.js':['<%= dev_folder %>/requirejs/require.js']}},
 //            pace:{files:{'<%= js_folder %>/pace.js':['<%= dev_folder %>/pace/pace.js']}},
             jaddress:{files:{'<%= js_folder %>/jquery.address.js':['<%= dev_folder %>/jquery-address/src/jquery.address.js']}},
+//            jsrouter:{files:{'<%= js_folder %>/jsrouter.js':['<%= dev_folder %>/js-router/router.js']}},
+            simrou:{files:{'<%= js_folder %>/simrou.js':['<%= dev_folder %>/simrou/build/simrou.js']}},
 //            skrollr:{files:{'<%= js_folder %>/skrollr.js':['<%= dev_folder %>/skrollr/src/skrollr.js']}},
 //            jquery:{files:{'<%= js_folder %>/jquery.js':['<%= dev_folder %>/jquery/jquery.js']}},
 //            fastclick:{files:{'<%= js_folder %>/fastclick.js':['<%= dev_folder %>/fastclick/lib/fastclick.js']}},
