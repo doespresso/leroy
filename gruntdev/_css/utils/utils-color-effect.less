@@ -34,9 +34,21 @@
 .mutator-bg-dark{
   color:#fff;
   hr{border-color:#fff}
-  [class*='logo-'], a, p, h1, h2, h3, h4, h5, h6 {
+  [class*='logo-'], a, p, h1, h2, h3, h3.subtitle, h4, h5, h6 {
     color: #fff;
     .transition(1s);
+  }
+  #panel-top{
+    svg,#logo-path-small{
+      path,polygon,rect{
+        fill:#fff;
+      }
+    }
+  }
+  #menu-opener{
+    figure{
+      background-color:#fff;
+    }
   }
 
 }

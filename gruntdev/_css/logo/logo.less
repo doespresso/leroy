@@ -47,12 +47,12 @@
 .logo-slogan{
   font-size: 10px;
   letter-spacing: 3px;
-  padding-left:3px;
+//  padding-left:3px;
   line-height: 1.4;
   font-family: @font-family-serif;
   @media (max-width:@screen-xs-max){
     letter-spacing: 1px;
-    padding-left:1px;
+//    padding-left:1px;
   }
 }
 
@@ -68,5 +68,25 @@
   }
   path{
     fill:#eee;
+  }
+}
+
+
+#small-logo{
+  height:@tps*1.5;
+  width:@tps*1.5;
+  display:block;
+//  background-color:@gray-light;
+//  background-image:url('/assets/img/logo/logo_symbol_original.svg');
+//  background-position:center center;
+//  background-size:100%;
+//  background-repeat:no-repeat;
+  svg{
+    width:90%;
+    height:90%;
+    path{
+      fill:@gray-dark;
+      stroke-width:0;
+    }
   }
 }
