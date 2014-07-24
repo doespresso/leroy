@@ -13,14 +13,20 @@
     height: @top-panel-height;
   }
 
-  //  .transition(1s);
+  .transition(0.5s ease);
+
   @media (max-width: @screen-xs-max) {
     height: @top-panel-height;
     [class*='col-'] {
       height: @top-panel-height;
     }
   }
+
   .show-overlay & {padding-right:10px;}
+
+  .loading &{
+    .translate(0,-200px);
+  }
 }
 
 

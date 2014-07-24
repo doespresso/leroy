@@ -17,7 +17,7 @@
   color:@gray-darker;
   height:@tps;
   @media (max-width:@screen-xs-max){
-    margin-left:@gap - 8px;
+    margin-left:@gap - 5px;
   }
   .transition(1s);
 }
@@ -76,19 +76,20 @@
 
 
 #small-logo{
-  height:@tps*1.5;
-  width:@tps*1.5;
+  height:@tps*1.4;
+  width:@tps*1.4;
+  padding:@tps/6;
   display:block;
-//  background-color:@gray-light;
+  background-color:darken(@gray-lighter,5%);
 //  background-image:url('/assets/img/logo/logo_symbol_original.svg');
 //  background-position:center center;
 //  background-size:100%;
 //  background-repeat:no-repeat;
   svg{
-    width:90%;
-    height:90%;
+    width:98%;
+    height:98%;
     path{
-      fill:@gray-dark;
+      fill:@gray;
       stroke-width:0;
     }
   }
