@@ -1,5 +1,5 @@
 @section('content')
-<body class="loading mutator-bg-dark">
+<body class="loading mutator-bg">
 
 <style>
 
@@ -53,7 +53,7 @@
     <div class="wrapper">
         <div class="container">
             <div class="row">
-                <div class="col-xs-3">
+                <div class="col-xs-4">
                     <div class="vmp">
                         <div class="vmc">
                             <div id="logo-area" class="">
@@ -64,7 +64,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-xs-6 text-center">
+                <div class="col-xs-4 text-center">
                     <div class="vmp">
                         <div class="vmc">
                             <a href="#" id="small-logo">
@@ -94,7 +94,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-xs-3">
+                <div class="col-xs-4">
                     <div class="vmp text-right">
                         <div class="vmc">
                             <a href="#/nav" id="menu-opener">

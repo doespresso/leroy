@@ -16,6 +16,9 @@
 #logo-area{
   color:@gray-darker;
   height:@tps;
+  @media (max-width:@screen-xs-max){
+    margin-left:@gap;
+  }
   .transition(1s);
 }
 
@@ -51,8 +54,7 @@
   line-height: 1.4;
   font-family: @font-family-serif;
   @media (max-width:@screen-xs-max){
-    letter-spacing: 1px;
-//    padding-left:1px;
+    letter-spacing: 0px;
   }
 }
 
