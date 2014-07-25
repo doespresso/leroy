@@ -38,11 +38,11 @@ return array(
             'type' => 'bool',
             'title' => 'NEW',
         ),
-//        'sort' => array(
-//            'type' => 'number',
-//            'decimals' => 0,
-//            'title' => 'Индекс сортировки',
-//        ),
+        'sort' => array(
+            'type' => 'number',
+            'decimals' => 0,
+            'title' => 'Индекс сортировки',
+        ),
         'img' => array(
             'title' => 'Фото',
             'output' => '<img src="/uploads/gallery/thumb/(:value)"/>',
@@ -83,11 +83,11 @@ return array(
             'title' => 'Короткое описание',
             'type' => 'text',
         ),
-//        'sort' => array(
-//            'type' => 'number',
-//            'title' => 'Индекс сортировки',
-//            'value' => '10'
-//        ),
+        'sort' => array(
+            'type' => 'number',
+            'title' => 'Индекс сортировки',
+            'value' => '10'
+        ),
         'desc_alt' => array(
             'title' => 'Короткое описание ENG',
             'type' => 'text',

@@ -6,6 +6,7 @@
 //  background:green;
   width: 100%;
   top: 0;
+  .translate(0,-200px);
   height: @top-panel-height;
   position: fixed;
   z-index: @top-panel-z-index;
@@ -24,8 +25,8 @@
 
   .show-overlay & {padding-right:10px;}
 
-  .loading &{
-    .translate(0,-200px);
+  .loaded &{
+    .translate(0,0);
   }
 }
 

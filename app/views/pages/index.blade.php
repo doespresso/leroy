@@ -1,11 +1,11 @@
-<a class="sub-nav-btn" id="go-showcase" href="#showcase"><span>showcase</span></a>
+<a class="sub-nav-btn" id="go-showcase" href="#showcase"><figure class="arrow-more"></figure><span>showcase</span></a>
 <a class="sub-nav-btn" id="go-page-down" href="#"></a>
 <a class="sub-nav-btn" id="go-back" href="#"><span>back</span></a>
 
 <div id="main-pages" class="pages-container">
 <div class="pages-wrapper">
 
-<div class="page-slide" id="page-home" data-hash="page:home">
+<div class="page-slide" id="page-home" data-hash="page:home" data-mutate="mutator-bg-dark">
     <div class="page-content-wrapper">
         <section id="presentation" class="">
             <div class="wrapper">
@@ -40,7 +40,7 @@
             </div>
             </div>
             @foreach ($showcase->photos as $photo)
-            <div class="page-slide" data-type="photo" style='background-image:url({{url("/")}}/uploads/gallery/big/{{$photo->img}})'>
+            <div class="page-slide" data-type="photo" @if($photo->light_bg!=1) data-mutate="mutator-bg-dark"@endif style='background-image:url({{url("/")}}/uploads/gallery/big/{{$photo->img}})'>
                 <figure class="photo-caption">{{$photo->desc}}</figure>
             </div>
             @endforeach

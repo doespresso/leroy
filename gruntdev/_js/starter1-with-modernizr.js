@@ -859,6 +859,7 @@ var sliding_speed = 1000,
 
 var router,
     pages,
+    mutator,
     pages_count = null,
     slide_pages = new Array();
 
@@ -896,6 +897,16 @@ window.onload = function () {
 //    l_page_id,
 //    l_page_index;
 
+
+function mutate(mutator){
+    $("body").removeClass(function (index, css) {
+        return (css.match (/\bmutator-\S+/g) || []).join(' ');
+    });
+    if (mutator !== undefined) {
+        $("body").addClass(mutator);
+    }
+    console.log(mutator);
+}
 
 function url2obj(hash) { // обработка хеша
     var action;
@@ -1043,7 +1054,8 @@ yepnope([
 
                 function initpages(slider) {
                     var loading_timer = setTimeout(function () {
-                        $("body").removeClass("loading");
+                        $("body").addClass("loaded");
+                        setTimeout(function () {$("#page-loading-frame").remove()},1000);
                         presentation.startAutoplay();
                     }, 500);
                     pages_count = slider.slides.length;
@@ -1100,6 +1112,8 @@ yepnope([
                                 onSlideChangeStart: function (swiper) {
                                 },
                                 onSlideChangeEnd: function (swiper) {
+                                    mutator = $(swiper.activeSlide()).attr("data-mutate");
+                                    mutate(mutator);
                                     if (swiper.activeIndex > 0) {
                                         console.log("this is photo");
                                         $("#go-back").addClass("active");
@@ -1144,7 +1158,8 @@ yepnope([
                         reinitDown(swiper);
                     },
                     onFirstInit: function (swiper) {
-
+                        mutator = $(swiper.activeSlide()).attr("data-mutate");
+                        mutate(mutator);
                     },
                 });
 
@@ -1164,6 +1179,10 @@ yepnope([
                         window.location.hash = '';
 //                        presentation.startAutoplay();
                     }
+
+                    mutator = $(swiper.activeSlide()).attr("data-mutate");
+                    mutate(mutator);
+
                     console.log("CHANGE END");
                     reinitDown(swiper);
                 });
@@ -1270,6 +1289,11 @@ yepnope([
                             swiper.setTransition(swiper.slides[i], speed);
                         }
                     },
+                });
+
+                presentation.addCallback('SlideChangeEnd', function (swiper) {
+                    mutator = $(swiper.activeSlide()).attr("data-mutate");
+                    mutate(mutator);
                 });
 
 

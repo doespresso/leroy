@@ -20,7 +20,7 @@ class HomeController extends \BaseController {
             'menus' => (Menu::where('active', '=', 1)->with('cats')->get()),
             'cats' => (Cat::where('active', '=', 1)->with('items')->get()),
             'slides' => (Slide::where('active', '=', 1)->orderby('sort','desc')->get()),
-            'photos' => (Photo::where('active', '=', 1)->get())
+            'photos' => (Photo::where('active', '=', 1)->orderby('sort')->get())
             ]
         );
     }
