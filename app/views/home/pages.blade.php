@@ -113,7 +113,7 @@
 @include('pages.index')
 
 <div class="page-back-pic"></div>
-
+<div id="camera"></div>
 
 </body>
 @stop
