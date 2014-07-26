@@ -91,30 +91,12 @@
 @include('pages.index')
 
 
-
 <footer id="panel-bottom">
     <div class="wrapper">
         <div class="container">
             <div class="row">
-<!--                <div class="col-xs-4">-->
-<!--                    <div class="vmp">-->
-<!--                        <div class="vmc">-->
-<!--                            <a class="sub-nav-btn" id="go-back" href="#"><span>back</span></a>-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                </div>-->
-                <div class="col-xs-12 text-center">
-
-                            <a class="sub-nav-btn" id="go-showcase" href="#showcase"><figure class="arrow-more"></figure><span>showcase</span></a>
-
-                </div>
-<!--                <div class="col-xs-4">-->
-<!--                    <div class="vmp text-right">-->
-<!--                        <div class="vmc">-->
-<!--                            <a class="sub-nav-btn" id="go-page-down" href="#"></a>-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                </div>-->
+                <a id="go-back" href="#" class="col-xs-12 col-md-12"><figure class="arrow-back"></figure><span>back</span></a>
+                <a id="go-showcase" href="#" class="col-xs-12 col-md-12 text-center"><figure class="arrow-more"></figure><span>showcase</span></a>
             </div>
         </div>
     </div>
