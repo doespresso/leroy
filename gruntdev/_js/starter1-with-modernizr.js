@@ -858,10 +858,10 @@ var sliding_speed = 1000,
     reinittimeout;
 
 var router,
-    pages,
+    sections_in_slider,
     mutator,
-    pages_count = null,
-    slide_pages = new Array();
+    sections_count = null,
+    sections = new Array();
 
 //yepnope.injectCss(['dev/component/odometer/themes/odometer-theme-minimal.css']);
 
@@ -948,9 +948,9 @@ function jump(urlobj, pages) {
         if (urlobj.page !== undefined) {
             ind = idToindex("main-pages", urlobj.page);
             if (ind) {
-                pages.swipeTo(ind, 0, function (pages) {
+                sections_in_slider.swipeTo(ind, 0, function (sections_in_slider) {
                     console.log("JUMP");
-                    pages.fireCallback('SlideChangeEnd', pages);
+                    sections_in_slider.fireCallback('SlideChangeEnd', sections_in_slider);
                 });
                 console.log("INDEX---", ind);
             }
@@ -1043,7 +1043,7 @@ yepnope([
                         $("#go-page-down").addClass("have-next");
                     }
                     var subpages = $(swiper.activeSlide()).children(".pages-container").length;
-                    if (slide_pages[swiper.activeIndex]["slider"]) {
+                    if (sections[swiper.activeIndex]["slider"]) {
 //                        $("#go-showcase").addClass("active");
                         $("#go-page-down").addClass("have-sub");
                         if (swiper.activeIndex !== 0) $("#go-showcase").addClass("active");
@@ -1058,17 +1058,16 @@ yepnope([
                         setTimeout(function () {$("#page-loading-frame").remove()},1000);
                         presentation.startAutoplay();
                     }, 500);
-                    pages_count = slider.slides.length;
-                    var pages = slider.slides;
-                    var datagallery;
-                    pages.forEach(function (page, index) {
+                    sections_count = slider.slides.length; console.log("sections",sections_count);
+                    var sections_in_slider = slider.slides;
+                    sections_in_slider.forEach(function (page, index) {
                         var slide_page = null;
                         slide_page = $(page).find('.pages-container');
-                        slide_pages[index] = new Array();
-                        slide_pages[index]["id"] = $(page).attr("id");
-                        if (slide_page.length == 1) {
+                        sections[index] = new Array();
+                        sections[index]["id"] = $(page).attr("id");
+                        if (true) {
                             console.log('///////', slide_page.attr("id"), slide_page, index);
-                            slide_pages[index]["slider"] = slide_page.swiper({
+                            sections[index]["slider"] = slide_page.swiper({
                                 mode: 'horizontal',
                                 mousewheelControl: false,
                                 speed: 400,
@@ -1099,6 +1098,7 @@ yepnope([
                                     }
                                 },
                                 onSetWrapperTransition: function (swiper, speed) {
+                                    console.log("TR");
                                     for (var i = 0; i < swiper.slides.length; i++) {
                                         swiper.setTransition(swiper.slides[i], speed);
                                     }
@@ -1121,11 +1121,13 @@ yepnope([
                                     } else {
                                         $("#go-back").removeClass("active");
                                         $("#go-showcase").addClass("active");
+//                                        swiper.setTransform(swiper.slides[1], 'translate3d(-60px,0,0)');
+//                                        setTimeout(function(){swiper.setTransform(swiper.slides[1], 'translate3d(0,0,0)')},1000);
                                     }
                                 }
                             });
                         } else {
-                            slide_pages[index]["slider"] = null;
+//                            sections[index]["slider"] = null;
                         }
 //
 //
@@ -1138,12 +1140,12 @@ yepnope([
 //                        }
 
                     });
-                    console.log('|||||||', slide_pages);
+                    console.log('|||||||', sections);
 //                    idToindex("main-pages","menu");
 //                    indexToid("main-pages","2");
                 }
 
-                pages = new Swiper('#main-pages', {
+                sections_in_slider = new Swiper('#main-pages', {
                     mode: 'vertical',
                     noSwiping: true,
                     mousewheelControl: true,
@@ -1152,7 +1154,7 @@ yepnope([
                     wrapperClass: 'pages-wrapper',
                     slideClass: 'page-slide',
                     onSwiperCreated: function (swiper) {
-                        console.log('pages first init-----------------', swiper.activeIndex);
+                        console.log('sections_in_slider first init-----------------', swiper.activeIndex);
                         initpages(swiper);
 //                        jump(url2obj(window.location.hash), swiper);
                         reinitDown(swiper);
@@ -1163,21 +1165,23 @@ yepnope([
                     },
                 });
 
-                pages.addCallback('SlideChangeStart', function (swiper) {
+                sections_in_slider.addCallback('SlideChangeStart', function (swiper) {
                     $("#go-showcase").removeClass("active");
                     $("#go-page-down").removeClass("have-sub have-next");
                     $("#go-back").removeClass("active");
-                    if (slide_pages[swiper.activeIndex]["slider"]) {
-                        slide_pages[swiper.activeIndex]["slider"].swipeTo(0, 0);
+                    if (sections[swiper.activeIndex]["slider"]) {
+                        sections[swiper.activeIndex]["slider"].swipeTo(0, 0);
                     }
                 });
-                pages.addCallback('SlideChangeEnd', function (swiper) {
+                sections_in_slider.addCallback('SlideChangeEnd', function (swiper) {
                     if (swiper.activeIndex !== 0) {
 //                        window.location.hash = $(swiper.activeSlide()).attr("data-hash");
                         presentation.stopAutoplay();
+                        sections[swiper.activeIndex]["slider"].setTransform(sections[swiper.activeIndex]["slider"].slides[1], 'translate3d(-60px,0,0)');
                     } else {
                         window.location.hash = '';
 //                        presentation.startAutoplay();
+//                        setTimeout(function(){swiper.setTransform(swiper.slides[1], 'translate3d(0,0,0)')},1000);
                     }
 
                     mutator = $(swiper.activeSlide()).attr("data-mutate");
@@ -1186,7 +1190,7 @@ yepnope([
                     console.log("CHANGE END");
                     reinitDown(swiper);
                 });
-                pages.addCallback('TouchStart', function (swiper) {
+                sections_in_slider.addCallback('TouchStart', function (swiper) {
                     console.log("touch");
                 });
 
@@ -1198,17 +1202,17 @@ yepnope([
 
                 $("#go-page-down").on("click", function (e) {
                     e.preventDefault();
-                    pages.swipeNext();
+                    sections_in_slider.swipeNext();
                 })
 
                 $("#go-showcase").on("click", function (e) {
                     e.preventDefault();
-                    slide_pages[pages.activeIndex]["slider"].swipeNext();
+                    sections[sections_in_slider.activeIndex]["slider"].swipeNext();
                 });
 
                 $("#go-back").on("click", function (e) {
                     e.preventDefault();
-                    slide_pages[pages.activeIndex]["slider"].swipeTo(0);
+                    sections[sections_in_slider.activeIndex]["slider"].swipeTo(0);
                 })
 
 
@@ -1321,13 +1325,13 @@ yepnope([
 //            'jaddress': function (url, result, key) {
 ////                $.address.change(function(event) {
 ////                    console.log(event.value,'######',$.address.path());
-////                    jump(url2obj($.address.path()),pages);
+////                    jump(url2obj($.address.path()),sections_in_slider);
 ////                });
 //
 ////                var hash = window.location.hash.substr(1);
 ////                console.log(">>>>>>>");
 ////                console.log(hash);
-//////                jump(url2obj(window.location.hash),pages);
+//////                jump(url2obj(window.location.hash),sections_in_slider);
 ////                console.log(">>>>>>>");
 //
 //            },

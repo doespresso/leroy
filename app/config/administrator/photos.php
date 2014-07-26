@@ -97,9 +97,9 @@ return array(
             'title' => 'Опубликовано',
             'value' => 1,
         ),
-        'light_bg' => array(
+        'dark_content' => array(
             'type' => 'bool',
-            'title' => 'Сделать содержание белым',
+            'title' => 'Мутировать контент в темный цвет',
             'value' => 0,
         ),
         'img' => array(

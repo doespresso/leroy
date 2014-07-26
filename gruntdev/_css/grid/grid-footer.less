@@ -1,4 +1,5 @@
-@bottom-panel-height:60px;
+@bfs:16px;
+@bottom-panel-height:@bfs*4;
 @bottom-panel-z-index:@top-panel-z-index;
 
 #panel-bottom {
@@ -38,15 +39,17 @@
   text-decoration: none;
   .transition(0.5s);
   .translate(0, 1000%);
-  @ss: 20px;
+  @ss: 14px;
   text-align: center;
   font-size: @ss;
   line-height: @ss;
-  font-family: @font-family-titles-2;
+  font-family: @font-family-titles-1;
   text-transform: uppercase;
   span {
+
   }
   .arrow-back {
+    margin-bottom:@bfs;
     @c: #fff;
     z-index: -1;
     height: 1px;
@@ -55,7 +58,7 @@
     position: relative;
     left: 0;
     //    bottom: @gap;
-    top:-@gap;
+//    top:-@gap;
     width: 100%;
     .opacity(0);
     #ui-arrow-toprev(@w:@ss; @c:@c);
@@ -87,11 +90,11 @@
   text-decoration: none;
   .transition(0.5s);
   .translate(0, 1000%);
-  @ss: 20px;
+  @ss: 14px;
   text-align: center;
   font-size: @ss;
   line-height: @ss;
-  font-family: @font-family-titles-2;
+  font-family: @font-family-titles-1;
   text-transform: uppercase;
   span {}
   .arrow-more {
@@ -102,8 +105,8 @@
     background: @c;
     position: relative;
     left: 0;
+    margin-bottom:@bfs;
 //    bottom: @gap;
-    top:-@gap;
     width: 100%;
     .opacity(0);
     #ui-arrow-tonext(@w:@ss; @c:@c);
