@@ -1,6 +1,4 @@
-<a class="sub-nav-btn" id="go-showcase" href="#showcase"><figure class="arrow-more"></figure><span>showcase</span></a>
-<a class="sub-nav-btn" id="go-page-down" href="#"></a>
-<a class="sub-nav-btn" id="go-back" href="#"><span>back</span></a>
+
 
 <div id="main-pages" class="pages-container">
 <div class="pages-wrapper">

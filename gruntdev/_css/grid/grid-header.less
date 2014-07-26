@@ -34,21 +34,22 @@
 
 
 #menu-opener{
-  @th:1px;
+  @th:2px;
   border:0;
   padding:0;
   margin:0;
   display: block;
   width:@tps+4px;
-  height:@tps;
+  height:@tps+4px;
 //  background:blue;
   position:relative;
   figure{
     width:100%; height:@th; display:inline-block; position:absolute; z-index:10000; left:0;
     background-color:@gray-dark;
-    &:nth-child(1){top:2px}
-    &:nth-child(2){top:(@tps/2 - @th/2)}
-    &:nth-child(3){bottom:1px}
+    @space:floor((@tps - @th*3) / 2);
+    &:nth-child(1){top:0px}
+    &:nth-child(2){top:@th+@space}
+    &:nth-child(3){top:@th*2+@space*2}
   }
   @media (max-width:@screen-tablet){
     margin-right:@gap;
