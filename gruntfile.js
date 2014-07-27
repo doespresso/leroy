@@ -86,7 +86,7 @@ module.exports = function (grunt) {
 //            jquery:{files:{'<%= js_folder %>/jquery.js':['<%= dev_folder %>/jquery/jquery.js']}},
 //            fastclick:{files:{'<%= js_folder %>/fastclick.js':['<%= dev_folder %>/fastclick/lib/fastclick.js']}},
 //            bootstrap:{files:{'<%= js_folder %>/bootstrap.js':['<%= concat.bootstrap.dest %>']}},
-//            underscore:{files:{'<%= js_folder %>/vendor/underscore/underscore.min.js':['<%= dev_folder %>/underscore/underscore.js']}},
+            underscore:{files:{'<%= js_folder %>/underscore.js':['<%= dev_folder %>/underscore/underscore.js']}},
 //            app:{files:{'<%= js_folder %>/app.min.js':['<%= dev_folder %><%= dev_js %>/starter-with-modernizr.js']}},
             app1:{files:{'<%= js_folder %>/app1.min.js':['<%= dev_folder %><%= dev_js %>/starter1-with-modernizr.js']}},
 //            app:{files:{'<%= js_folder %>/app.min.js':['<%= dev_folder %><%= dev_js %>/app.js']}},

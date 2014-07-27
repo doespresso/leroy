@@ -2,7 +2,9 @@ var sliding_speed = 1000,
     sl_progress = true,
     reinittimeout;
 
-var current_section,
+var indexByalias,
+    current_hash,
+    current_section,
     current_subsection,
     router,
     sections_in_slider,
@@ -51,117 +53,120 @@ function mutate(mutator){
     if (mutator !== undefined) {
         $("body").addClass(mutator);
     }
-    console.log(mutator);
+//    console.log(mutator);
 }
 
-function url2obj(hash) { // обработка хеша
-    var action;
-    if (hash.substr(0, 1) == '#') {
-        action = hash.substr(1)
-    } else {
-        action = hash;
-    }
-    var properties = action.split('/');
-    var obj = {}
-    $.each(properties, function () {
-        var p = this.split(':');
-        obj[p[0]] = p[1];
-    });
-    return obj;
-}
+//function url2obj(hash) { // обработка хеша
+//    var action;
+//    if (hash.substr(0, 1) == '#') {
+//        action = hash.substr(1)
+//    } else {
+//        action = hash;
+//    }
+//    var properties = action.split('/');
+//    var obj = {}
+//    $.each(properties, function () {
+//        var p = this.split(':');
+//        obj[p[0]] = p[1];
+//    });
+//    return obj;
+//}
 
 
-function indexToid(container_id, i) {
-    var id = $("#" + container_id + " .page-slide:eq(" + i + ")").attr("data-hash");
-    console.log(container_id, i, "----", id);
-    if (id === undefined) id = false;
-    return id;
-}
+//function indexToid(container_id, i) {
+//    var id = $("#" + container_id + " .page-slide:eq(" + i + ")").attr("data-hash");
+//    console.log(container_id, i, "----", id);
+//    if (id === undefined) id = false;
+//    return id;
+//}
+//
+//function idToindex(container_id, id) {
+//    var pos = $("#" + container_id + ">.pages-wrapper>.page-slide").index($("#" + container_id + " [data-hash='page:" + id + "']"));
+//    if (pos == -1) pos = false;
+//    console.log(container_id, id, "+++", pos);
+//    return pos;
+//}
 
-function idToindex(container_id, id) {
-    var pos = $("#" + container_id + ">.pages-wrapper>.page-slide").index($("#" + container_id + " [data-hash='page:" + id + "']"));
-    if (pos == -1) pos = false;
-    console.log(container_id, id, "+++", pos);
-    return pos;
-}
+//function jump(urlobj, pages) {
+//    var ind;
+//    if (urlobj !== 'undefined') {
+//        if (urlobj.menu !== undefined) {
+//            console.log("menu action", urlobj.menu);
+//        }
+//        if (urlobj.page !== undefined) {
+//            ind = idToindex("main-pages", urlobj.page);
+//            if (ind) {
+//                sections_in_slider.swipeTo(ind, 0, function (sections_in_slider) {
+//                    console.log("JUMP");
+//                    sections_in_slider.fireCallback('SlideChangeEnd', sections_in_slider);
+//                });
+//                console.log("INDEX---", ind);
+//            }
+//        }
+//        if (urlobj.photo !== undefined) {
+//            console.log("photo action", urlobj.photo);
+//        }
+//    }
+//}
 
-function jump(urlobj, pages) {
-    var ind;
-    if (urlobj !== 'undefined') {
-        if (urlobj.menu !== undefined) {
-            console.log("menu action", urlobj.menu);
-        }
-        if (urlobj.page !== undefined) {
-            ind = idToindex("main-pages", urlobj.page);
-            if (ind) {
-                sections_in_slider.swipeTo(ind, 0, function (sections_in_slider) {
-                    console.log("JUMP");
-                    sections_in_slider.fireCallback('SlideChangeEnd', sections_in_slider);
-                });
-                console.log("INDEX---", ind);
-            }
-        }
-        if (urlobj.photo !== undefined) {
-            console.log("photo action", urlobj.photo);
-        }
-    }
-}
+
 
 
 yepnope([
     {
         load: {
             'jquery': 'http://'+location.hostname+'/assets/js/app/jquery.js',
+            'underscore': 'http://'+location.hostname+'/assets/js/app/underscore.js',
             'swiper': 'http://'+location.hostname+'/assets/js/app/swiper.js',
             'swiper_progress': 'http://'+location.hostname+'/assets/js/app/swiper-progress.js',
             'simrou': 'http://'+location.hostname+'/assets/js/app/simrou.js',
-//            'jaddress': 'assets/js/app/jquery.address.js',
         },
         callback: {
+
+            'underscore': function (url, result, key) {
+                indexByalias = function (slider, params) {
+                    console.log("->", params);
+                    var elem = _.find(slider.slides, function (num) {
+                        return num.getData("alias") == "/page/" + params.page;
+                    });
+                    console.log(elem);
+                    var elemindex = [0, 0];
+
+                    if (elem !== undefined) {
+                        elemindex[0] = _.indexOf(slider.slides, elem);
+                        console.log(elem);
+                        if (params.stage) {
+
+                            var subslider = slider.slides[elemindex[0]].getData("subslider").slides;
+                            var subelem = _.find(subslider, function (num) {
+                                return num.getData("alias") == "/page/" + params.page + "/stage/" + params.stage;
+                            });
+                            if (subelem !== undefined){
+                              elemindex[1] = _.indexOf(subslider, subelem);
+                            }
+                        }
+                    }
+
+                    return elemindex;
+                }
+            },
+
             'jquery': function (url, result, key) {
-
-
-                $(window).on("load", function () {
-
-                });
-
-
+                $(window).on("load", function () {});
                 function menuclose() {
                     $("body").removeClass("menu-slide-open");
                 }
-
                 $("#menu-opener").on("click", function (e) {
                     console.log("menu");
                     $("body").addClass("menu-slide-open");
                 });
-
                 $("#menu-closer").on("click", function (e) {
                     console.log("menu close");
                     menuclose();
                 });
-
-
                 $(function () {
 
-
-                    function changebg(img, mutator_class) {
-                        if (mutator_class != undefined) {
-                            $("body").addClass(mutator_class);
-                        }
-                        else {
-                            $("body").removeClass('mutator-bg-dark');
-                        }
-                        $("#slide-bg").css({
-                            "background-image": "url(" + img + ")",
-                        });
-                    }
-
-
                 });
-
-                /////////
-
-
             },
 
 
@@ -172,8 +177,31 @@ yepnope([
                 console.log("simrou");
                 router = new Simrou();
 
-                var navRoute = router.addRoute('/nav').any(function(event,params){
-                    console.log("SHOW MENU");
+                var pageRoute = router.addRoute('/page/:page').any(function(event,params){
+                    if(current_hash == '/page/'+params.page) {
+                        current_hash = null;
+                    }
+                    else {
+                        current_hash = '/page/'+params.page;
+                        var section_index = indexByalias(sections_in_slider,params);
+                        sections_in_slider.swipeTo(section_index[0]);
+                        console.log("page",params.page);
+                    }
+                });
+                var photoRoute = router.addRoute('/page/:page/stage/:stage').any(function(event,params){
+                    if(current_hash == '/page/'+params.page+"/stage/"+params.stage) {
+                        current_hash = null;
+                    }
+                    else {
+                        console.log("STAGE");
+                        current_hash = '/page/'+params.page+"/stage/"+params.stage
+                        var section_index = indexByalias(sections_in_slider,params);
+                        console.log(section_index);
+//                        sections_in_slider.swipeTo(section_index[0]);
+                        sections_in_slider.swipeTo(section_index[0]);
+                        sections_in_slider.slides[section_index[0]].getData("subslider").swipeTo(section_index[1],1);
+                        console.log("stage",params.stage);
+                    }
                 });
 
                 router.start();
@@ -189,15 +217,20 @@ yepnope([
                         $("#go-page-down").addClass("have-next");
                     }
                     if (swiper.activeSlide().getData("photos")) {
-                        $("#go-page-down").addClass("have-sub");
+//                        $("#go-page-down").addClass("have-sub");
 
-                        if (swiper.activeSlide().getData("subslider")) {
-                            $("#go-showcase").addClass("active");
-                        }
+                        if (swiper.activeSlide().getData("subslider").activeIndex > 0) {
+                            $("#go-showcase").removeClass("active");
+                            $("#go-back").addClass("active");
+
                     } else {
+                        $("#go-back").removeClass("active");
+                        $("#go-showcase").addClass("active");
                     }
-                    $("#go-back").removeClass("active");
+                    }
+//                    $("#go-back").removeClass("active");
                 }
+
 
                 function initpages(slider) {
 
@@ -254,9 +287,12 @@ yepnope([
                                         swiper.setTransition(swiper.slides[i], speed);
                                     }
                                 },
-                                onInit: function (swiper) {
+                                onFirstInit: function (swiper) {
+                                    console.log("subbb");
                                     for (var i = 0; i < swiper.slides.length; i++) {
                                         swiper.slides[i].style.zIndex = i;
+                                        swiper.slides[i].setData("alias",$(swiper.slides[i]).attr("data-hash"));
+                                        console.log("photohash",swiper.slides[i].getData("alias"));
                                     }
                                 },
                                 onSlideChangeStart: function (swiper) {
@@ -264,13 +300,9 @@ yepnope([
                                 onSlideChangeEnd: function (swiper) {
                                     mutator = $(swiper.activeSlide()).attr("data-mutate");
                                     mutate(mutator);
-                                    if (swiper.activeIndex > 0) {
-                                        $("#go-back").addClass("active");
-                                        $("#go-showcase").removeClass("active");
-                                    } else {
-                                        $("#go-back").removeClass("active");
-                                        $("#go-showcase").addClass("active");;
-                                    }
+                                    reinitDown(slider);
+                                    current_hash = swiper.activeSlide().getData("alias");
+                                    window.location.hash = current_hash;
                                 }
                             })
                         );
@@ -287,7 +319,6 @@ yepnope([
                     wrapperClass: 'pages-wrapper',
                     slideClass: 'page-slide',
                     onSwiperCreated: function (swiper) {
-                        console.log('sections_in_slider first init-----------------', swiper.activeIndex);
                         initpages(swiper);
 //                        jump(url2obj(window.location.hash), swiper);
                         reinitDown(swiper);
@@ -305,11 +336,19 @@ yepnope([
                         }
                     },
                     onSlideChangeEnd: function (swiper) {
-                        if (swiper.activeIndex !== 0) {
+
+                        if (swiper.activeIndex > 0){
                             presentation.stopAutoplay();
-                        } else {
-                            window.location.hash = '';
+//                            console.log("its start");
+//                            console.log(swiper.activeSlide().getData("alias"));
                         }
+                        else
+                        {
+
+                        }
+
+                        current_hash = swiper.activeSlide().getData("subslider").activeSlide().getData("alias");
+                        window.location.hash = current_hash;
 
                         mutator = $(swiper.activeSlide()).attr("data-mutate");
                         mutate(mutator);
