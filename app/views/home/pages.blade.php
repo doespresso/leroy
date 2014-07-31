@@ -22,7 +22,6 @@
     </ul>
 </nav>
 <nav class="menu-closer" id="menu-closer"></nav>
-
 <header id="panel-top">
     <div class="wrapper">
         <div class="container">
@@ -31,7 +30,6 @@
                     <div class="vmp">
                         <div class="vmc">
                             <a href="#/page/home" id="logo-area">
-                                <figure class="logo-standart"></figure>
                                 <figure class="logo-name">LEROY</figure>
                                 <figure class="logo-slogan">Restaurant & Bar</figure>
                             </a>
@@ -99,8 +97,7 @@
 </footer>
 
 
-<div class="page-back-pic"></div>
-<div id="camera"></div>
+<figure id="orientation"></figure>>
 
 @include('pages.bg')
 

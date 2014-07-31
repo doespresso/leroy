@@ -28,3 +28,22 @@
   background-color:red;
   display:none;
 }
+
+#orientation{
+  position:fixed;
+  z-index:10000;
+  left:0;
+  top:0;
+  width:100%;
+  height:100%;
+  background-color:@gray;
+  color:@gray-lighter;
+  padding:@gap*2;
+  display:none;
+  &:before{
+    content:'Please, change device orientation'
+  }
+  @media (max-width: @screen-xs-max) and (orientation:landscape) {
+    display: block;
+  }
+}

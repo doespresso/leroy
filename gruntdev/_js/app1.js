@@ -1,4 +1,4 @@
-var sliding_speed = 1000,
+var sliding_speed = 2000,
     sl_progress = true,
     reinittimeout;
 
@@ -17,7 +17,8 @@ var indexByalias,
 
 if (Modernizr.touch) {
     sliding_speed = 300;
-//    sl_progress = false;
+    sliding_speed = 600;
+    sl_progress = false;
 }
 
 //yepnope({
@@ -103,6 +104,9 @@ yepnope([
 
             'jquery': function (url, result, key) {
                 $(window).on("load", function () {});
+                $(window).on("resize", function () {
+                    window.location.href='/';
+                });
 
                 function menuclose() {
                     $("body").removeClass("menu-slide-open");
@@ -126,6 +130,8 @@ yepnope([
                 $(function () {
 
                 });
+
+
             },
 
 
@@ -146,7 +152,7 @@ yepnope([
                         var section_index = indexByalias(sections_in_slider,params);
                         console.log("page",params.page);
                         if(section_index[0]==0){
-                            sections_in_slider.swipeTo(0,600);
+                            sections_in_slider.swipeTo(0,1000);
                             presentation.swipeTo(0,1);
                         }
                         else{
@@ -328,6 +334,7 @@ yepnope([
                         }
                         else
                         {
+                            presentation.startAutoplay();
                             console.log("pr",swiper.activeIndex);
                             mutate(presentation);
                             current_hash = '/page/home';
@@ -378,7 +385,7 @@ yepnope([
                     mode: 'horizontal',
                     mousewheelControl: false,
                     speed: sliding_speed,
-                    autoplay: 5000,
+                    autoplay: 3000,
                     autoplayDisableOnInteraction: true,
                     roundLengths: true,
                     shortSwipes: true,
@@ -387,8 +394,7 @@ yepnope([
                     resizeReInit: true, // на сколько я понимаю этот параметр не учитывается [1]
 //                    wrapperClass: 'swiper-wrapper',
 //                    slideClass: 'swiper-slide',
-//                    progress: sl_progress,
-                    progress: false,
+                    progress: sl_progress,
                     onFirstInit: function (swiper) {
                         mutate(swiper);
 

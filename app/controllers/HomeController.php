@@ -19,7 +19,7 @@ class HomeController extends \BaseController {
             'afishas' => (Afisha::where('active', '=', 1)->orderby('day', 'desc')->limit(1)->get()),
             'menus' => (Menu::where('active', '=', 1)->with('cats')->get()),
             'cats' => (Cat::where('active', '=', 1)->with('items')->get()),
-            'slides' => (Slide::where('active', '=', 1)->orderby('sort','desc')->get()),
+            'slides' => (Slide::where('active', '=', 1)->orderby('sort','asc')->get()),
             'photos' => (Photo::where('active', '=', 1)->orderby('sort')->get())
             ]
         );

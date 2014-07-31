@@ -15,10 +15,11 @@
 //echo public_path() . '/uploads/afisha/big/';
 
 //Route::get('home', array('as' => 'home','uses'=>'HomeController@index'));
-Route::get('home/{l1?}/{l2?}/{l3?}/{l4?}', array('as' => 'home','uses'=>'HomeController@index'));
-Route::get('/', function(){
-    return Response::view('home.old');
-});
+//Route::get('home/{l1?}/{l2?}/{l3?}/{l4?}', array('as' => 'home','uses'=>'HomeController@index'));
+//Route::get('/', function(){
+//    return Response::view('home.old');
+//});
+Route::get('/',array('as' => 'home','uses'=>'HomeController@index'));
 
 
 Route::resource('afishas', 'AfishasController');

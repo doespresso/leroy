@@ -38,7 +38,7 @@
                                 @include('social.icons')
                                 @endif
                                 @if($page->showbtn)
-                                <a class="btn btn-default" href="{{$page->btn_link}}">
+                                <a class="btn btn-dark" href="{{$page->btn_link}}">
                                     @if($page->btn_text)
                                     {{$page->btn_text}}
                                     @else
