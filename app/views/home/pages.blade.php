@@ -97,7 +97,7 @@
 </footer>
 
 
-<figure id="orientation"></figure>>
+<figure id="orientation"></figure>
 
 @include('pages.bg')
 
