@@ -873,7 +873,7 @@ var indexByalias,
 if (Modernizr.touch) {
     sliding_speed = 300;
     sliding_speed = 600;
-    sl_progress = false;
+//    sl_progress = false;
 }
 
 //yepnope({
@@ -960,7 +960,7 @@ yepnope([
             'jquery': function (url, result, key) {
                 $(window).on("load", function () {});
                 $(window).on("resize", function () {
-                    window.location.href='/';
+                    location.reload();
                 });
 
                 function menuclose() {
@@ -1012,7 +1012,7 @@ yepnope([
                         }
                         else{
                             sections_in_slider.slides[section_index[0]].getData("subslider").swipeTo(0,1);
-                            sections_in_slider.swipeTo(section_index[0],500);
+                            sections_in_slider.swipeTo(section_index[0],1000);
                         }
 
                     }
@@ -1090,8 +1090,8 @@ yepnope([
                                 wrapperClass: 'pages-wrapper',
                                 slideClass: 'page-slide',
                                 progress: true,
-                                pagination:'#pager'+section.getData("slideid"),
-                                paginationClickable:true,
+//                                pagination:'#pager'+section.getData("slideid"),
+//                                paginationClickable:true,
                                 onProgressChange: function (swiper) {
                                     for (var i = 0; i < swiper.slides.length; i++) {
                                         var slide = swiper.slides[i];
@@ -1244,6 +1244,7 @@ yepnope([
                     autoplayDisableOnInteraction: true,
                     roundLengths: true,
                     shortSwipes: true,
+                    loop:true,
 //                    longSwipesRatio: 0.2,
 
                     resizeReInit: true, // на сколько я понимаю этот параметр не учитывается [1]
@@ -1310,40 +1311,8 @@ yepnope([
                 });
 
 
-                function resetprogress() {
-
-                    presentation.reInit();
-                }
-
-                $("[data-action=reset]").on("click", function (e) {
-                    // что интересно здесь (по нажатию) "резет" происходит корректно
-
-                    presentation.reInit();
-                    presentation.swipeTo(0, 1);
-
-                });
-
-
-///////////////////////////gallries//////////////////////////
-///////////////////////////gallries//////////////////////////
-///////////////////////////gallries//////////////////////////
-
-
             },
 
-//            'jaddress': function (url, result, key) {
-////                $.address.change(function(event) {
-////                    console.log(event.value,'######',$.address.path());
-////                    jump(url2obj($.address.path()),sections_in_slider);
-////                });
-//
-////                var hash = window.location.hash.substr(1);
-////                console.log(">>>>>>>");
-////                console.log(hash);
-//////                jump(url2obj(window.location.hash),sections_in_slider);
-////                console.log(">>>>>>>");
-//
-//            },
 
 
         }
