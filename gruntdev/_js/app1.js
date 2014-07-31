@@ -8,6 +8,7 @@ var indexByalias,
     current_subsection,
     router,
     sections_in_slider,
+    presentation,
     mutator,
     sections_count = null,
     sections = new Array();
@@ -69,7 +70,6 @@ yepnope([
             'swiper': 'http://'+location.hostname+'/assets/js/app/swiper.js',
             'swiper_progress': 'http://'+location.hostname+'/assets/js/app/swiper-progress.js',
             'simrou': 'http://'+location.hostname+'/assets/js/app/simrou.js',
-            'vid': 'http://'+location.hostname+'/assets/js/app/vid.js',
         },
         callback: {
 
@@ -137,15 +137,23 @@ yepnope([
                 router = new Simrou();
 
                 var pageRoute = router.addRoute('/page/:page').any(function(event,params){
+                    console.log('cur_h',current_hash);
                     if(current_hash == '/page/'+params.page) {
                         current_hash = null;
                     }
                     else {
                         current_hash = '/page/'+params.page;
                         var section_index = indexByalias(sections_in_slider,params);
-                        sections_in_slider.slides[section_index[0]].getData("subslider").swipeTo(0,1);
-                        sections_in_slider.swipeTo(section_index[0],500);
                         console.log("page",params.page);
+                        if(section_index[0]==0){
+                            sections_in_slider.swipeTo(0,1);
+                            presentation.swipeTo(0,1);
+                        }
+                        else{
+                            sections_in_slider.slides[section_index[0]].getData("subslider").swipeTo(0,1);
+                            sections_in_slider.swipeTo(section_index[0],500);
+                        }
+
                     }
                 });
                 var photoRoute = router.addRoute('/page/:page/stage/:stage').any(function(event,params){
@@ -165,10 +173,6 @@ yepnope([
                 });
 
                 router.start();
-
-            },
-
-            'underscore': function (url, result, key) {
 
             },
 
@@ -301,18 +305,32 @@ yepnope([
                     },
                     onSlideChangeEnd: function (swiper) {
 
+//                        if (swiper.activeIndex > 0){
+//                            presentation.stopAutoplay();
+//                            current_hash = swiper.activeSlide().getData("subslider").activeSlide().getData("alias");
+//                            window.location.hash = current_hash;
+//                            mutate(swiper);
+//
+//                        }
+//                        else
+//                        {
+//                            console.log("pr",swiper.activeIndex);
+//                            mutate(presentation);
+//                            current_hash = '/page/home';
+//                            window.location.hash = current_hash;
+//                        }
+
                         if (swiper.activeIndex > 0){
                             presentation.stopAutoplay();
                             current_hash = swiper.activeSlide().getData("subslider").activeSlide().getData("alias");
                             window.location.hash = current_hash;
                             mutate(swiper);
-
                         }
                         else
                         {
                             console.log("pr",swiper.activeIndex);
                             mutate(presentation);
-                            current_hash = '';
+                            current_hash = '/page/home';
                             window.location.hash = current_hash;
                         }
 
@@ -356,7 +374,7 @@ yepnope([
 ///////////////////////////presentation//////////////////////////
 
 
-                var presentation = new Swiper('#slides', {
+                presentation = new Swiper('#slides', {
                     mode: 'horizontal',
                     mousewheelControl: false,
                     speed: sliding_speed,

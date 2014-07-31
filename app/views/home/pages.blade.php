@@ -14,9 +14,9 @@
 
 <nav class="menu-slide st-effect-1" id="menu-slide">
     <ul>
-        <li><a href="#/page/about">Leroy</a></li>
-        <li><a href="#/page/menu">Restaurant Menu</a></li>
-        <li><a href="#/page/terrace">Terrace</a></li>
+        <li><a href="#/page/about">Restaurant</a></li>
+        <li><a href="#/page/menu">Menu</a></li>
+        <li><a href="#/page/terrace">Summer Terrace</a></li>
         <li><a href="#/page/corporate">Event & Catering</a></li>
         <li><a href="#/page/contact">Contact</a></li>
     </ul>

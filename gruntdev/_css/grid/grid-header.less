@@ -41,13 +41,14 @@
   margin:0;
   display: block;
   width:@tps+4px;
-  height:@tps+4px;
+  @oh:@tps - 4px;
+  height:@oh;
 //  background:blue;
   position:relative;
   figure{
     width:100%; height:@th; display:inline-block; position:absolute; z-index:10000; left:0;
     background-color:@gray-dark;
-    @space:floor((@tps - @th*3) / 2);
+    @space:floor((@oh - @th*3) / 2);
     &:nth-child(1){top:0px}
     &:nth-child(2){top:@th+@space}
     &:nth-child(3){top:@th*2+@space*2}

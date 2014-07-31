@@ -51,9 +51,9 @@
                     </div>
                     @if ($page->gallery && $showcase)
                     @foreach ($showcase->photos as $photo)
-                    <div class="page-slide" data-type="photo" data-hash="/page/{{$page->alias}}/stage/{{$photo->id}}" @if($photo->dark_content!=1) data-mutate="mutator-bg-dark"@endif style='background-image:url({{url("/")}}/uploads/gallery/big/{{$photo->img}})'>
-                    <figure class="photo-caption">{{$photo->desc}}</figure>
-                </div>
+                    @if($photo->active == 1)
+                    <div class="page-slide" data-type="photo" data-hash="/page/{{$page->alias}}/stage/{{$photo->id}}" @if($photo->dark_content!=1) data-mutate="mutator-bg-dark"@endif style='background-image:url({{url("/")}}/uploads/gallery/big/{{$photo->img}})'><figure class="photo-caption">{{$photo->desc}}</figure></div>
+                @endif
                 @endforeach
                 @endif
             </div>
