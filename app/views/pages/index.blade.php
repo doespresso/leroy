@@ -30,7 +30,7 @@
                                 @if($page->showaddress)
 
                                 @if(Setting::get('address_line_1'))<address>{{Setting::get('address_line_1')}}</address>@endif
-                                @if(Setting::get('address_line_2'))<p>{{Setting::get('address_line_2')}}</p>@endif
+                                @if(Setting::get('address_line_2'))<div>{{Setting::get('address_line_2')}}</div>@endif
 
                                 @if(Setting::get('phone'))<phone>{{Setting::get('phone')}}</phone>@endif
                                 @endif

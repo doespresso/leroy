@@ -8,9 +8,13 @@ h2 {
 
   .condesnsed {
     margin-bottom: @gap;
-    padding-left: @grid-gutter-width;
-    padding-right: @grid-gutter-width;
-    @media (min-width: @screen-sm-max) {
+    padding-left: @grid-gutter-width/2;
+    padding-right: @grid-gutter-width/2;
+    @media (min-width: @screen-sm) {
+      padding-left: 22%;
+      padding-right: 22%;
+    }
+    @media (min-width: @screen-md) {
       padding-left: 32%;
       padding-right: 32%;
     }
@@ -50,11 +54,11 @@ h2 {
   }
 
 
-  p{line-height: 1;}
+  p{line-height: 1; text-align:justify}
   p>span{line-height: 1!important;}
 
   @media (min-width: @screen-sm) {
-    p{line-height: 1.5;}
+    p{line-height: 1.5; text-align:center}
     p>span{line-height: 1.5!important;}
   }
 }

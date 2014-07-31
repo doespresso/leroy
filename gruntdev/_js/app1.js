@@ -146,7 +146,7 @@ yepnope([
                         var section_index = indexByalias(sections_in_slider,params);
                         console.log("page",params.page);
                         if(section_index[0]==0){
-                            sections_in_slider.swipeTo(0,1);
+                            sections_in_slider.swipeTo(0,600);
                             presentation.swipeTo(0,1);
                         }
                         else{
