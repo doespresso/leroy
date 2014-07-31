@@ -46,7 +46,8 @@ window.onload = function () {
 //    l_page_index;
 
 
-function mutate(mutator){
+function mutate(slider){
+    var mutator = $(slider.activeSlide()).attr("data-mutate");
     $("body").removeClass(function (index, css) {
         return (css.match (/\bmutator-\S+/g) || []).join(' ');
     });
@@ -56,58 +57,6 @@ function mutate(mutator){
 //    console.log(mutator);
 }
 
-//function url2obj(hash) { // обработка хеша
-//    var action;
-//    if (hash.substr(0, 1) == '#') {
-//        action = hash.substr(1)
-//    } else {
-//        action = hash;
-//    }
-//    var properties = action.split('/');
-//    var obj = {}
-//    $.each(properties, function () {
-//        var p = this.split(':');
-//        obj[p[0]] = p[1];
-//    });
-//    return obj;
-//}
-
-
-//function indexToid(container_id, i) {
-//    var id = $("#" + container_id + " .page-slide:eq(" + i + ")").attr("data-hash");
-//    console.log(container_id, i, "----", id);
-//    if (id === undefined) id = false;
-//    return id;
-//}
-//
-//function idToindex(container_id, id) {
-//    var pos = $("#" + container_id + ">.pages-wrapper>.page-slide").index($("#" + container_id + " [data-hash='page:" + id + "']"));
-//    if (pos == -1) pos = false;
-//    console.log(container_id, id, "+++", pos);
-//    return pos;
-//}
-
-//function jump(urlobj, pages) {
-//    var ind;
-//    if (urlobj !== 'undefined') {
-//        if (urlobj.menu !== undefined) {
-//            console.log("menu action", urlobj.menu);
-//        }
-//        if (urlobj.page !== undefined) {
-//            ind = idToindex("main-pages", urlobj.page);
-//            if (ind) {
-//                sections_in_slider.swipeTo(ind, 0, function (sections_in_slider) {
-//                    console.log("JUMP");
-//                    sections_in_slider.fireCallback('SlideChangeEnd', sections_in_slider);
-//                });
-//                console.log("INDEX---", ind);
-//            }
-//        }
-//        if (urlobj.photo !== undefined) {
-//            console.log("photo action", urlobj.photo);
-//        }
-//    }
-//}
 
 
 
@@ -120,6 +69,7 @@ yepnope([
             'swiper': 'http://'+location.hostname+'/assets/js/app/swiper.js',
             'swiper_progress': 'http://'+location.hostname+'/assets/js/app/swiper-progress.js',
             'simrou': 'http://'+location.hostname+'/assets/js/app/simrou.js',
+            'vid': 'http://'+location.hostname+'/assets/js/app/vid.js',
         },
         callback: {
 
@@ -153,17 +103,26 @@ yepnope([
 
             'jquery': function (url, result, key) {
                 $(window).on("load", function () {});
+
                 function menuclose() {
                     $("body").removeClass("menu-slide-open");
                 }
+
                 $("#menu-opener").on("click", function (e) {
                     console.log("menu");
                     $("body").addClass("menu-slide-open");
                 });
+
                 $("#menu-closer").on("click", function (e) {
                     console.log("menu close");
                     menuclose();
                 });
+
+                $("#menu-slide>ul>li").on("click",function(){
+                    console.log("menu close");
+                    menuclose();
+                });
+
                 $(function () {
 
                 });
@@ -184,7 +143,8 @@ yepnope([
                     else {
                         current_hash = '/page/'+params.page;
                         var section_index = indexByalias(sections_in_slider,params);
-                        sections_in_slider.swipeTo(section_index[0]);
+                        sections_in_slider.slides[section_index[0]].getData("subslider").swipeTo(0,1);
+                        sections_in_slider.swipeTo(section_index[0],500);
                         console.log("page",params.page);
                     }
                 });
@@ -198,13 +158,17 @@ yepnope([
                         var section_index = indexByalias(sections_in_slider,params);
                         console.log(section_index);
 //                        sections_in_slider.swipeTo(section_index[0]);
-                        sections_in_slider.swipeTo(section_index[0]);
+                        sections_in_slider.swipeTo(section_index[0],1);
                         sections_in_slider.slides[section_index[0]].getData("subslider").swipeTo(section_index[1],1);
                         console.log("stage",params.stage);
                     }
                 });
 
                 router.start();
+
+            },
+
+            'underscore': function (url, result, key) {
 
             },
 
@@ -245,6 +209,7 @@ yepnope([
                     slider.slides.forEach(function (section, index) {
                         section.setData("alias",$(section).attr("data-hash"));
                         section.setData("title",$(section).find("h3").text());
+                        section.setData("slideid",$(section).attr("id"));
 
                         var subslider_container = $(section).find('.pages-container[data-level="2"]');
                         var subslider_photos = false;
@@ -260,6 +225,8 @@ yepnope([
                                 wrapperClass: 'pages-wrapper',
                                 slideClass: 'page-slide',
                                 progress: true,
+                                pagination:'#pager'+section.getData("slideid"),
+                                paginationClickable:true,
                                 onProgressChange: function (swiper) {
                                     for (var i = 0; i < swiper.slides.length; i++) {
                                         var slide = swiper.slides[i];
@@ -297,9 +264,8 @@ yepnope([
                                 },
                                 onSlideChangeStart: function (swiper) {
                                 },
-                                onSlideChangeEnd: function (swiper) {
-                                    mutator = $(swiper.activeSlide()).attr("data-mutate");
-                                    mutate(mutator);
+                                onSlideChangeEnd: function (swiper) {;
+                                    mutate(swiper);
                                     reinitDown(slider);
                                     current_hash = swiper.activeSlide().getData("alias");
                                     window.location.hash = current_hash;
@@ -320,12 +286,10 @@ yepnope([
                     slideClass: 'page-slide',
                     onSwiperCreated: function (swiper) {
                         initpages(swiper);
-//                        jump(url2obj(window.location.hash), swiper);
                         reinitDown(swiper);
                     },
                     onFirstInit: function (swiper) {
-                        mutator = $(swiper.activeSlide()).attr("data-mutate");
-                        mutate(mutator);
+//                        mutate(swiper);
                     },
                     onSlideChangeStart: function (swiper) {
                         $("#go-showcase").removeClass("active");
@@ -339,19 +303,19 @@ yepnope([
 
                         if (swiper.activeIndex > 0){
                             presentation.stopAutoplay();
-//                            console.log("its start");
-//                            console.log(swiper.activeSlide().getData("alias"));
+                            current_hash = swiper.activeSlide().getData("subslider").activeSlide().getData("alias");
+                            window.location.hash = current_hash;
+                            mutate(swiper);
+
                         }
                         else
                         {
-
+                            console.log("pr",swiper.activeIndex);
+                            mutate(presentation);
+                            current_hash = '';
+                            window.location.hash = current_hash;
                         }
 
-                        current_hash = swiper.activeSlide().getData("subslider").activeSlide().getData("alias");
-                        window.location.hash = current_hash;
-
-                        mutator = $(swiper.activeSlide()).attr("data-mutate");
-                        mutate(mutator);
                         reinitDown(swiper);
                     }
                 });
@@ -381,6 +345,8 @@ yepnope([
                 })
 
 
+
+
                 //////////////show next more ///////////
                 //////////////show next more ///////////
                 //////////////show next more ///////////
@@ -390,7 +356,7 @@ yepnope([
 ///////////////////////////presentation//////////////////////////
 
 
-                var presentation = new Swiper('#main', {
+                var presentation = new Swiper('#slides', {
                     mode: 'horizontal',
                     mousewheelControl: false,
                     speed: sliding_speed,
@@ -406,7 +372,7 @@ yepnope([
 //                    progress: sl_progress,
                     progress: false,
                     onFirstInit: function (swiper) {
-
+                        mutate(swiper);
 
 //                        $(window).on("resize", function () {
 //                            if (reinittimeout) {
@@ -461,8 +427,7 @@ yepnope([
                 });
 
                 presentation.addCallback('SlideChangeEnd', function (swiper) {
-                    mutator = $(swiper.activeSlide()).attr("data-mutate");
-                    mutate(mutator);
+                    mutate(swiper);
                 });
 
 

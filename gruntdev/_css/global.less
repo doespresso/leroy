@@ -29,12 +29,12 @@
 @import "../bootstrap/less/bootstrap.less";
 //Bootstrap 3
 
-@import "/icons/icons.less";
+//@import "/icons/icons.less";
 //icons
 
 @import "/slider/slider.less";
 //sliders
-@import "/menu/menu-cafe.less";
+//@import "/menu/menu-cafe.less";
 //menu cafe
 @import "/menus/menus.less";
 //navigations
@@ -51,9 +51,9 @@
 @import "/loaders/indicators.less";
 //loading indicators
 
-@import "/video/video-bg.less";
+//@import "/video/video-bg.less";
 //loading indicators
-@import "/social/social.less";
+//@import "/social/social.less";
 //social icons
 
 body {
@@ -105,6 +105,52 @@ body {
 //  padding:10px;
 //}
 
+.pages-container {
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  margin: 0;
+  overflow: hidden;
+}
+
+.pages-wrapper {
+  position: relative;
+  width: 100%;
+  -webkit-box-sizing: content-box;
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
+}
+
+.page-slide {
+  margin: 0;
+  padding: 0;
+  float: left;
+  position: relative;
+  #bg-cover();
+
+  .page-content-wrapper {
+    /*border: 2px dashed yellow;*/
+    height: 100%;
+    z-index: 1;
+  }
+
+  &.vm {
+    display: table;
+    .page-content-wrapper {
+      display: table-cell;
+      vertical-align: middle;
+      text-align: center;
+    }
+  }
+
+  &.swiper-slide-active {
+    > .go-showcase.active {
+      .opacity(1);
+      display: block;
+    }
+  }
+}
+
 /////////
 address, phone {
   margin: 0 0;
@@ -118,8 +164,8 @@ address, phone {
   display: none;
   .no-touch & {
     display: block;
-    width: 100px;
-    height: 100px;
+    width: 120px;
+    height: 120px;
     margin: @gap/2 auto;
     svg {
       width: 100%;
@@ -169,3 +215,6 @@ address, phone {
 row [class="col-"]{
   background-color:red!important;
 }
+
+
+

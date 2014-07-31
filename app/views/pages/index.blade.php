@@ -1,9 +1,6 @@
-
-
 <div id="main-pages" class="pages-container">
     <div class="pages-wrapper">
-
-        <div class="page-slide" id="page-home" data-hash="" data-mutate="mutator-bg-dark">
+        <div class="page-slide" id="page-home" data-hash="/page/home" data-mutate="mutator-bg-dark">
             <div class="page-content-wrapper">
                 <section id="presentation" class="">
                     <div class="wrapper">
@@ -31,11 +28,23 @@
                                 @if($page->title)<h3 class="subtitle">{{$page->title}}</h3>@endif
                                 @if($page->desc)<div class="condesnsed">{{$page->desc}}</div>@endif
                                 @if($page->showaddress)
-                                @if(Setting::get('address'))<address>{{Setting::get('address')}}</address>@endif
+
+                                @if(Setting::get('address_line_1'))<address>{{Setting::get('address_line_1')}}</address>@endif
+                                @if(Setting::get('address_line_2'))<p>{{Setting::get('address_line_2')}}</p>@endif
+
                                 @if(Setting::get('phone'))<phone>{{Setting::get('phone')}}</phone>@endif
                                 @endif
                                 @if($page->showsocial)
                                 @include('social.icons')
+                                @endif
+                                @if($page->showbtn)
+                                <a class="btn btn-default" href="{{$page->btn_link}}">
+                                    @if($page->btn_text)
+                                    {{$page->btn_text}}
+                                    @else
+                                    Show more
+                                    @endif
+                                </a>
                                 @endif
                             </div>
                         </div>
@@ -48,9 +57,8 @@
                 @endforeach
                 @endif
             </div>
+            <div class="swiper-pagination" id="pagerpage-{{$page->alias}}"></div>
         </div>
-
-
     </div>
     @endforeach
 </div>

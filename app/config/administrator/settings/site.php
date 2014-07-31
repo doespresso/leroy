@@ -40,11 +40,19 @@ return array(
             'title' => 'Номер телефона',
             'type' => 'text',
         ),
-        'address' => array(
-            'title' => 'Адрес',
+        'address_line_1' => array(
+            'title' => 'Адрес 1',
             'type' => 'text',
         ),
-        'address_alt' => array(
+        'address_line_2' => array(
+            'title' => 'Адрес 2',
+            'type' => 'text',
+        ),
+        'address_alt_1' => array(
+            'title' => 'Адрес ENG',
+            'type' => 'text',
+        ),
+        'address_alt_2' => array(
             'title' => 'Адрес ENG',
             'type' => 'text',
         ),

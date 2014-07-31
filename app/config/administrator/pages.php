@@ -97,6 +97,18 @@ return array(
             'type' => 'bool',
             'title' => 'Показать социальщину',
         ),
+        'showbtn' => array(
+            'type' => 'bool',
+            'title' => 'Показать кнопку',
+        ),
+        'btn_text' => array(
+            'title' => 'Текст кнопки',
+            'type'=>'text',
+        ),
+        'btn_link' => array(
+            'title' => 'Ссылка кнопки',
+            'type'=>'text',
+        ),
         'sort' => array(
             'type' => 'number',
             'title' => 'Индекс сортировки',
@@ -105,6 +117,10 @@ return array(
         'bgcolor'=>array(
             'title'=>'Цвет фона',
             'type'=>'color',
+        ),
+        'active_html' => array(
+            'title' => 'Код элемента интерактивной подложки',
+            'type' => 'wysiwyg',
         ),
         'img' => array(
             'title' => 'Картинка',

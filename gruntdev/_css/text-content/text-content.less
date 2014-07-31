@@ -1,48 +1,74 @@
-h2{font-size:32px; font-family: @font-family-titles-1; text-transform: uppercase;}
-
+h2 {
+  font-size: 32px;
+  font-family: @font-family-titles-1;
+  text-transform: uppercase;
+}
 
 .text-content {
 
   .condesnsed {
     margin-bottom: @gap;
-    padding-left:@grid-gutter-width;
-    padding-right:@grid-gutter-width;
-    @media (min-width:@screen-tablet){
-      padding-left:35%;
-      padding-right:35%;
+    padding-left: @grid-gutter-width;
+    padding-right: @grid-gutter-width;
+    @media (min-width: @screen-sm-max) {
+      padding-left: 35%;
+      padding-right: 35%;
     }
   }
-
 
   .subtitle {
     font-size: 48px;
     line-height: 1;
     font-family: @font-family-titles-1;
-    color:@gray-darker;
-//    font-family: Arial;
+    color: @gray-darker;
+    //    font-family: Arial;
     font-weight: bold;
-    text-transform:uppercase;
-    margin:@gap 0;
-//    .super-condesnsed;
-    padding:0 @gap;
-    @media (max-width:@screen-xs-max){
+    text-transform: uppercase;
+    margin: @gap 0;
+    //    .super-condesnsed;
+    padding: 0 @gap;
+    @media (max-width: @screen-xs-max) {
       font-size: 28px;
-      margin:@gap/2 0;
+      margin: @gap/2 0;
     }
   }
 
+  p {
+    a {
+      text-decotation: none;
+      //      border-bottom:1px solid rgba(255,255,255,0.97);
+      border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+      padding-bottom: 1px;
+      &:hover {
+        text-decoration: none
+      }
+    }
+  }
+  .btn {
+    padding-right: @gap*1.4;
+    padding-left: @gap*1.4;
+  }
 
+
+  p{line-height: 1;}
+  p>span{line-height: 1!important;}
+
+  @media (min-width: @screen-sm) {
+    p{line-height: 1.5;}
+    p>span{line-height: 1.5!important;}
+  }
 }
 
+hr {
+  width: 20px;
+  border-color: @gray-light;
+}
 
-
-hr{width: 20px; border-color: @gray-light;}
-
-.title-icon{
+.title-icon {
   display: inline-block;
   position: relative;
-  padding:@gap/2;
-  @fs:46px;
-  font-size:@fs;
-  color:lighten(@gray-light,30%);
+  padding: @gap/2;
+  @fs: 46px;
+  font-size: @fs;
+  color: lighten(@gray-light, 30%);
 }

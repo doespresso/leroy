@@ -14,15 +14,11 @@
 
 <nav class="menu-slide st-effect-1" id="menu-slide">
     <ul>
-        <li><a href="#">Restaurant</a></li>
-        <li><a href="#menu">Menu</a></li>
-        <li><a href="#">Main dishes</a></li>
-        <li><a href="#">Wines</a></li>
-        <li><a href="#">Bar</a></li>
-        <li><a href="#terrace">Terrasse</a></li>
-        <li><a href="#event">Event</a></li>
-        <li><a href="#">Contact</a></li>
-        <li><a href="#concert">Concerts</a></li>
+        <li><a href="#/page/about">Leroy</a></li>
+        <li><a href="#/page/menu">Restaurant Menu</a></li>
+        <li><a href="#/page/terrace">Terrace</a></li>
+        <li><a href="#/page/corporate">Event & Catering</a></li>
+        <li><a href="#/page/contact">Contact</a></li>
     </ul>
 </nav>
 <nav class="menu-closer" id="menu-closer"></nav>
@@ -34,18 +30,18 @@
                 <div class="col-xs-4">
                     <div class="vmp">
                         <div class="vmc">
-                            <div id="logo-area" class="">
+                            <a href="#/page/home" id="logo-area">
                                 <figure class="logo-standart"></figure>
                                 <figure class="logo-name">LEROY</figure>
                                 <figure class="logo-slogan">Restaurant & Bar</figure>
-                            </div>
+                            </a>
                         </div>
                     </div>
                 </div>
                 <div class="col-xs-4 text-center">
                     <div class="vmp">
                         <div class="vmc">
-                            <a href="#" id="small-logo">
+                            <a href="#/page/home" id="small-logo">
                                 <svg id="logo-path-small" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                                      viewBox="0 0 192.411 171.279" enable-background="new 0 0 192.411 171.279"
                                      xml:space="preserve">
@@ -75,7 +71,7 @@
                 <div class="col-xs-4">
                     <div class="vmp text-right">
                         <div class="vmc">
-                            <a href="#/nav" id="menu-opener">
+                            <a href="#" id="menu-opener">
                                 <figure></figure>
                                 <figure></figure>
                                 <figure></figure>
@@ -105,6 +101,8 @@
 
 <div class="page-back-pic"></div>
 <div id="camera"></div>
+
+@include('pages.bg')
 
 </body>
 @stop

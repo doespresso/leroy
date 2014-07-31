@@ -1,5 +1,5 @@
 @bfs:16px;
-@bottom-panel-height:@bfs*4;
+@bottom-panel-height:@bfs*3;
 @bottom-panel-z-index:@top-panel-z-index;
 
 #panel-bottom {
@@ -17,10 +17,10 @@
 
   .transition(0.5s ease);
 
-  @media (max-width: @screen-xs-max) {
-    height: @bottom-panel-height;
+  @media (min-width: @screen-sm-max) {
+    height: @bottom-panel-height*1.7;
     [class*='col-'] {
-      height: @bottom-panel-height;
+      height: @bottom-panel-height*1.7;
     }
   }
 

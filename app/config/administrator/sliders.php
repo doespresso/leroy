@@ -38,6 +38,10 @@ return array(
             'decimals' => 0,
             'title' => 'Индекс сортировки',
         ),
+        'dark_content' => array(
+            'type' => 'bool',
+            'title' => 'Мутировать контент в темный',
+        ),
 //        'img' => array(
 //            'title' => 'Картинка',
 //            'output' => '<img src="/uploads/slider/published/(:value)"/>',
@@ -97,9 +101,9 @@ return array(
             'title'=>'Цвет фона',
             'type'=>'color',
         ),
-        'light_bg' => array(
+        'dark_content' => array(
             'type' => 'bool',
-            'title' => 'Сделать текст темным',
+            'title' => 'Мутировать контент в темный',
         ),
         'img' => array(
             'title' => 'Картинка',

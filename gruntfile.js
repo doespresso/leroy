@@ -98,7 +98,7 @@ module.exports = function (grunt) {
 //            oridomi:{files:{'<%= js_folder %>/oridomi.js':['<%= dev_folder %>/oridomi/oridomi.js']}},
 //            bg:{files:{'<%= js_folder %>/bgcheck.js':['<%= dev_folder %>/backgroundCheck/background-check.js']}},
 //            swiper_progress:{files:{'<%= js_folder %>/vendor/swiper/swiper_progress.min.js':['<%= dev_folder %>/swiper/plugins/smooth-progress/idangerous.swiper.progress.js']}},
-//            switchery:{files:{'<%= js_folder %>/vendor/switchery/switchery.min.js':['<%= dev_folder %>/switchery/dist/switchery.js']}},
+            vid:{files:{'<%= js_folder %>/vid.js':['<%= dev_folder %>/covervid-gh-pages/covervid.js']}},
 //            mmenu:{files:{'<%= js_folder %>/vendor/mmenu/src/js/jquery.mmenu.min.all.js':['<%= dev_folder %>/jQuery.mmenu/src/js/jquery.mmenu.min.all.js']}},
         },
 
