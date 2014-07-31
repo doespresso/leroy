@@ -18,7 +18,7 @@ var indexByalias,
 if (Modernizr.touch) {
     sliding_speed = 300;
     sliding_speed = 600;
-    sl_progress = false;
+//    sl_progress = false;
 }
 
 //yepnope({
