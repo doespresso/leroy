@@ -122,20 +122,24 @@ return array(
             'title' => 'Код элемента интерактивной подложки',
             'type' => 'textarea',
         ),
-        'video_code' => array(
-            'title' => 'Video Back (только HTML5)',
-            'type' => 'textarea',
+        'show_video' => array(
+            'type' => 'bool',
+            'title' => 'Показать videobackground',
         ),
-//        'img' => array(
-//            'title' => 'Картинка',
-//            'type' => 'image',
-//            'location' => public_path() . '/uploads/pages/originals/',
-//            'naming' => 'keep',
-//            'size_limit' => 7,
-//            'sizes' => array(
-//                array(1920, 1300, 'landscape', public_path() . '/uploads/pages/published/', 75),
-//            )
-//        ),
+        'video_mp4' => array(
+            'title' => 'Файл .mp4',
+            'type' => 'file',
+            'location' => public_path() . '/uploads/video/',
+            'naming' => 'keep',
+            'size_limit' => 7,
+        ),
+        'video_webm' => array(
+            'title' => 'Файл .webm',
+            'type' => 'file',
+            'location' => public_path() . '/uploads/video/',
+            'naming' => 'keep',
+            'size_limit' => 7,
+        ),
     ),
 
 

@@ -92,7 +92,7 @@
 <figure id="orientation"></figure>
 
 @include('pages.bg')
-
+@include('misc.counter')
 </body>
 @stop
 

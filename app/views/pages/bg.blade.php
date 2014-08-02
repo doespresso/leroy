@@ -1,9 +1,11 @@
 <div id="page-colors">
 @foreach ($pages as $page)
-@if($page->bgcolor)
-<figure page-hash="/page/{{$page->alias}}" style="background-color:{{$page->bgcolor}}">
-@if($page->video_code)
-    {{$page->video_code}}
+@if($page->show_video || $page->bgcolor)
+<figure page-hash="/page/{{$page->alias}}" @if($page->bgcolor)style="background-color:{{$page->bgcolor}}"@endif>
+@if($page->show_video)
+@if($page->video_mp4)
+<video autoplay loop><source src="/uploads/video/{{$page->video_mp4}}" type="video/mp4"><source src="/uploads/video/{{$page->video_webm}}" type="video/webm"></video>
+@endif
 @endif
 </figure>
 @endif

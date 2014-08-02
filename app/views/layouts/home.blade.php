@@ -23,4 +23,5 @@
     <title>{{Setting::get('site_name')}}</title>
     <link href="/assets/css/app.min.css" rel="stylesheet">
     <script src="/assets/js/app/app1.min.js"></script>
-</head>@yield('content')</html>
+</head>@yield('content')
+</html>
