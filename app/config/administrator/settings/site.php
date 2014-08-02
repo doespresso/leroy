@@ -60,6 +60,10 @@ return array(
             'title' => 'QR',
             'type' => 'text',
         ),
+        'metrika' => array(
+            'title' => 'Yandex.Metrika',
+            'type' => 'text',
+        ),
 //        'tel2' => array(
 //            'title' => 'Телефон 2',
 //            'type' => 'text',

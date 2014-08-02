@@ -10,7 +10,7 @@
             </div>
         </div>
         @foreach ($pages as $page)
-        <div id="page-{{$page->alias}}" class="page-slide" data-hash="/page/{{$page->alias}}" data-photos="{{!empty($page->gallery->id) ? $page->gallery->id:''}}" data-photos-loaded="0" style="background-color: {{$page->bgcolor}}; color:{{$page->color}}">
+        <div id="page-{{$page->alias}}" class="page-slide" data-hash="/page/{{$page->alias}}" data-photos="{{!empty($page->gallery->id) ? $page->gallery->id:''}}" data-photos-loaded="0" style="color:{{$page->color}}">
             <div id="{{$page->alias}}-pages" class="pages-container" data-level="2">
                 <div class="pages-wrapper">
                     <?php
@@ -31,7 +31,6 @@
 
                                 @if(Setting::get('address_line_1'))<address>{{Setting::get('address_line_1')}}</address>@endif
                                 @if(Setting::get('address_line_2'))<div>{{Setting::get('address_line_2')}}</div>@endif
-
                                 @if(Setting::get('phone'))<phone>{{Setting::get('phone')}}</phone>@endif
                                 @endif
                                 @if($page->showsocial)

@@ -1,5 +1,5 @@
 @section('content')
-<body class="loading mutator-bg">
+<body class="mutator-bg">
 
 <style>
 
@@ -12,15 +12,7 @@
 </div>
 </div>
 
-<nav class="menu-slide st-effect-1" id="menu-slide">
-    <ul>
-        <li><a href="#/page/about">Restaurant</a></li>
-        <li><a href="#/page/menu">Menu</a></li>
-        <li><a href="#/page/terrace">Summer Terrace</a></li>
-        <li><a href="#/page/corporate">Event & Catering</a></li>
-        <li><a href="#/page/contact">Contact</a></li>
-    </ul>
-</nav>
+@include('menus.slidemenu')
 <nav class="menu-closer" id="menu-closer"></nav>
 <header id="panel-top">
     <div class="wrapper">

@@ -48,6 +48,12 @@ window.onload = function () {
 //    l_page_index;
 
 
+function pre_mutate(slider){
+    $("#page-colors figure").removeClass("active")
+}
+
+
+
 function mutate(slider){
     var mutator = $(slider.activeSlide()).attr("data-mutate");
     $("body").removeClass(function (index, css) {
@@ -56,7 +62,10 @@ function mutate(slider){
     if (mutator !== undefined) {
         $("body").addClass(mutator);
     }
-//    console.log(mutator);
+    var bg_color = $("#page-colors figure"+"[page-hash='"+$(slider.activeSlide()).attr("data-hash")+"']").first();
+    if(bg_color !== undefined){
+        bg_color.addClass("active");
+    }
 }
 
 
@@ -302,6 +311,7 @@ yepnope([
 //                        mutate(swiper);
                     },
                     onSlideChangeStart: function (swiper) {
+                        pre_mutate(swiper);
                         $("#go-showcase").removeClass("active");
                         $("#go-page-down").removeClass("have-sub have-next");
                         $("#go-back").removeClass("active");

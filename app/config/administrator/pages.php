@@ -120,18 +120,22 @@ return array(
         ),
         'active_html' => array(
             'title' => 'Код элемента интерактивной подложки',
-            'type' => 'wysiwyg',
+            'type' => 'textarea',
         ),
-        'img' => array(
-            'title' => 'Картинка',
-            'type' => 'image',
-            'location' => public_path() . '/uploads/pages/originals/',
-            'naming' => 'keep',
-            'size_limit' => 7,
-            'sizes' => array(
-                array(1920, 1300, 'landscape', public_path() . '/uploads/pages/published/', 75),
-            )
+        'video_code' => array(
+            'title' => 'Video Back (только HTML5)',
+            'type' => 'textarea',
         ),
+//        'img' => array(
+//            'title' => 'Картинка',
+//            'type' => 'image',
+//            'location' => public_path() . '/uploads/pages/originals/',
+//            'naming' => 'keep',
+//            'size_limit' => 7,
+//            'sizes' => array(
+//                array(1920, 1300, 'landscape', public_path() . '/uploads/pages/published/', 75),
+//            )
+//        ),
     ),
 
 

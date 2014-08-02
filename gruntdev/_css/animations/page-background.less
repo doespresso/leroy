@@ -23,11 +23,7 @@
   #bg-cover();
 }
 
-.video-wrapper{
-  #pbg-bg(@z-index:2);
-  background-color:red;
-  display:none;
-}
+
 
 #orientation{
   position:fixed;
@@ -45,5 +41,45 @@
   }
   @media (max-width: @screen-xs-max) and (orientation:landscape) {
     display: block;
+  }
+}
+
+
+#page-colors{
+  width:100%;
+  height:100%;
+  display:block;
+  position:fixed;
+  left:0;
+  top:0;
+  overflow: hidden;
+  z-index:-1;
+  figure{
+    width:100%;
+    height:100%;
+    display:block;
+    position:fixed;
+    left:0;
+    top:0;
+    overflow: hidden;
+    background-color:green;
+    .opacity(0);
+    .transition(opacity 2s);
+    &.active{
+      .opacity(1);
+    }
+  }
+}
+
+.video-wrapper{
+  width:100%;
+  height:100%;
+  display:none;
+  position:fixed;
+  left:0;
+  top:0;
+  overflow: hidden;
+  figure.active &{
+    display:block;
   }
 }
